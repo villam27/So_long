@@ -6,7 +6,7 @@
 #    By: alboudje <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 23:55:26 by alboudje          #+#    #+#              #
-#    Updated: 2022/12/16 14:10:10 by alboudje         ###   ########.fr        #
+#    Updated: 2022/12/16 14:27:51 by alboudje         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ all : title $(NAME)
 
 $(NAME) : $(OBJ)
 	@make -C libft
+	@make -C mlbx
 	@$(CC) -o $(NAME) $(CFLAGS) $(OBJ) $(LIBFT)
 	@printf "$(GREEN)Creating $(CYAN)$(NAME)$(END): OK\n"
 
@@ -40,10 +41,12 @@ $(NAME) : $(OBJ)
 clean :
 	-rm -f $(OBJ)
 	-make clean -C libft
+	-make clean -C mlbx
 
 fclean : clean
 	-rm -f $(NAME)
 	-make fclean -C libft
+	-make fclean -C mlbx
 
 re : fclean all
 
