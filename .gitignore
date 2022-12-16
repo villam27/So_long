@@ -1,0 +1,12 @@
+.DS_Store
+.vscode
+
+# Object files
+*.o
+
+# Libraries
+*.a
+
+# Executables
+*.out
+so_long
