@@ -6,7 +6,7 @@
 #    By: alboudje <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 23:55:26 by alboudje          #+#    #+#              #
-#    Updated: 2022/12/16 14:27:51 by alboudje         ###   ########.fr        #
+#    Updated: 2022/12/16 15:42:29 by alboudje         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,29 +24,32 @@ INCLUDES_FILES 	= 	so_long.h
 INCLUDES 		= 	$(addprefix $(SRC_FOLDER), $(INCLUDES_FILES))
 
 OBJ 			= 	${SRC:.c=.o}
-CFLAGS 			= 	-Wall -Wextra -Werror #-fsanitize=address
+CFLAGS 			= 	-Wall -Wextra -Werror #-fsanitize=address -g
+
+MLX_FLAGS		=	-Lmlx -lmlx -framework OpenGL -framework AppKit
+MLX_FOLDER		=	mlx/
 
 all : title $(NAME)
 
 $(NAME) : $(OBJ)
 	@make -C libft
-	@make -C mlbx
-	@$(CC) -o $(NAME) $(CFLAGS) $(OBJ) $(LIBFT)
+	@make -C mlx
+	@$(CC) -o $(NAME) $(CFLAGS) $(OBJ) $(MLX_FLAGS) -lm $(MLX_FOLDER)libmlx.a
 	@printf "$(GREEN)Creating $(CYAN)$(NAME)$(END): OK\n"
 
 %.o : %.c $(INCLUDES) Makefile $(LIBFT_FILES)
-	@$(CC) $(CFLAGS) -o $@ -c $<
+	@$(CC) $(CFLAGS) -Imlx -o $@ -c $<
 	@printf "$(GREEN)Compiling $(NAME): $(CYAN)$<: $(GREEN)OK$(END)\n"
 
 clean :
 	-rm -f $(OBJ)
 	-make clean -C libft
-	-make clean -C mlbx
+	-make clean -C mlx
 
 fclean : clean
 	-rm -f $(NAME)
 	-make fclean -C libft
-	-make fclean -C mlbx
+	-make fclean -C mlx
 
 re : fclean all
 
