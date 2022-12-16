@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:55:09 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/16 17:40:30 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/16 22:13:08 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,13 @@ int	win_close(t_ILX_Window	*window)
 	exit(0);
 }
 
+int input_key(int keycode, t_ILX_Window *window)
+{
+	if (keycode == ESC)
+		win_close(window);
+	return (0);
+}
+
 int	main(void)
 {
 	t_ILX_Window	window;
@@ -60,6 +67,7 @@ int	main(void)
 	ILX_draw_rect(&renderer, rect, 0xff4444);
 	mlx_put_image_to_window(window.mlx, window.mlx_win, renderer.img, 0, 0);
 	mlx_hook(window.mlx_win, 17, 0, win_close, &window);
+	mlx_hook(window.mlx_win, 2, 1L<<0, input_key, &window);
 	mlx_loop(window.mlx);
 	return (EXIT_SUCCESS);
 }
