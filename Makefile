@@ -6,7 +6,7 @@
 #    By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 23:55:26 by alboudje          #+#    #+#              #
-#    Updated: 2022/12/16 21:37:29 by alboudje         ###   ########.fr        #
+#    Updated: 2022/12/16 22:06:45 by alboudje         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ INCLUDES_FILES 	= 	so_long.h
 INCLUDES 		= 	$(addprefix $(SRC_FOLDER), $(INCLUDES_FILES))
 
 OBJ 			= 	${SRC:.c=.o}
-CFLAGS 			= 	-Wall -Wextra -Werror #-fsanitize=address -g
+CFLAGS 			= 	-Wall #-Wextra -Werror #-fsanitize=address -g
 
 ifeq ($(UNAME_S), Darwin)
 MLX_FORLDER		= 	mlx/
@@ -41,7 +41,7 @@ all : title $(NAME)
 $(NAME) : $(OBJ)
 	@make -C libft
 	@make -C $(MLX_FOLDER)
-	@$(CC) -o $(NAME) $(CFLAGS) $(OBJ) $(MLX_FLAGS) -lm $(MLX_FOLDER)libmlx.a
+	@$(CC) -o $(NAME) $(CFLAGS) $(OBJ) $(MLX_FLAGS) -lm $(MLX_FOLDER)libmlx.a $(LIBFT)
 	@printf "$(GREEN)Creating $(CYAN)$(NAME)$(END): OK\n"
 
 %.o : %.c $(INCLUDES) Makefile $(LIBFT_FILES)
