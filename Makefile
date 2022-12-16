@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: alboudje <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 23:55:26 by alboudje          #+#    #+#              #
-#    Updated: 2022/12/16 15:42:29 by alboudje         ###   ########.fr        #
+#    Updated: 2022/12/16 21:37:29 by alboudje         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,30 +26,37 @@ INCLUDES 		= 	$(addprefix $(SRC_FOLDER), $(INCLUDES_FILES))
 OBJ 			= 	${SRC:.c=.o}
 CFLAGS 			= 	-Wall -Wextra -Werror #-fsanitize=address -g
 
-MLX_FLAGS		=	-Lmlx -lmlx -framework OpenGL -framework AppKit
-MLX_FOLDER		=	mlx/
+ifeq ($(UNAME_S), Darwin)
+MLX_FORLDER		= 	mlx/
+MLX_FLAGS		= 	-Lmlx -lmlx -framework OpenGL -framework AppKit
+MLX_CCFLAGS		= 	-Imlx
+else
+MLX_FOLDER		=	 mlx_linux/
+MLX_FLAGS		= 	-Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+MLX_CCFLAGS		= 	-I/usr/include -Imlx_linux -O3
+endif
 
 all : title $(NAME)
 
 $(NAME) : $(OBJ)
 	@make -C libft
-	@make -C mlx
+	@make -C $(MLX_FOLDER)
 	@$(CC) -o $(NAME) $(CFLAGS) $(OBJ) $(MLX_FLAGS) -lm $(MLX_FOLDER)libmlx.a
 	@printf "$(GREEN)Creating $(CYAN)$(NAME)$(END): OK\n"
 
 %.o : %.c $(INCLUDES) Makefile $(LIBFT_FILES)
-	@$(CC) $(CFLAGS) -Imlx -o $@ -c $<
+	@$(CC) $(CFLAGS) $(MLX_CCFLAGS) -o $@ -c $<
 	@printf "$(GREEN)Compiling $(NAME): $(CYAN)$<: $(GREEN)OK$(END)\n"
 
 clean :
 	-rm -f $(OBJ)
 	-make clean -C libft
-	-make clean -C mlx
+	-make clean -C $(MLX_FOLDER)
 
 fclean : clean
 	-rm -f $(NAME)
 	-make fclean -C libft
-	-make fclean -C mlx
+	-make fclean -C $(MLX_FOLDER)
 
 re : fclean all
 
