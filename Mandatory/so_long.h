@@ -6,7 +6,7 @@
 /*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:53:59 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/16 17:17:55 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/16 17:34:07 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,20 @@
 # define SO_LONG_H
 # include "../libft/libft.h"
 
-typedef struct	s_ILX_Renderer {
+typedef struct	s_ILX_Renderer
+{
 	void	*img;
 	char	*addr;
 	int		bits_per_px;
 	int		line_len;
 	int		endian;
 }	t_ILX_Renderer;
+
+typedef struct s_ILX_Window
+{
+	void	*mlx;
+	void	*mlx_win;
+}	t_ILX_Window;
 
 typedef struct	s_ILX_Rect
 {
