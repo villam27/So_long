@@ -6,7 +6,7 @@
 #    By: alboudje <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 23:55:26 by alboudje          #+#    #+#              #
-#    Updated: 2022/12/17 12:53:03 by alboudje         ###   ########.fr        #
+#    Updated: 2022/12/17 14:07:41 by alboudje         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ LIBFT_FILES		= 	libft/*.c libft/*.h libft/Makefile
 SRC_FOLDER		= 	Mandatory/
 SRC_FILES		= 	main.c \
 					so_long.c \
+					player.c \
 					ILX.c \
 					ILX_Rect.c \
 					ILX_Window.c

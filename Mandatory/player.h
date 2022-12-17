@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ILX.h                                              :+:      :+:    :+:   */
+/*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/17 00:44:58 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/17 14:00:38 by alboudje         ###   ########.fr       */
+/*   Created: 2022/12/17 13:36:10 by alboudje          #+#    #+#             */
+/*   Updated: 2022/12/17 14:06:20 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ILX_H
-# define ILX_H
-# include "ILX_Keycodes.h"
-# include "ILX_Window.h"
-# include "ILX_Rect.h"
+#ifndef PLAYER_H
+#define PLAYER_H
+#include "so_long.h"
 
+t_player	*create_player();
+void		destroy_player(t_player *player);
+
+void		player_input(t_Game_data *data);
+void		player_update(t_Game_data *data);
+void		player_render(t_Game_data *data);
 #endif

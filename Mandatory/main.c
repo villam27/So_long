@@ -6,11 +6,12 @@
 /*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:55:09 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/17 13:26:55 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/17 14:07:22 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include "player.h"
 
 static int next_frame(t_Game_data *data)
 {
@@ -35,10 +36,11 @@ int	main(void)
 	update_data.ren = renderer;
 	update_data.rect = &rect;
 	update_data.inputs = &inputs;
-	mlx_hook((*window).mlx_win, 17, 0, win_close, &update_data);
-	mlx_hook((*window).mlx_win, 2, 1L<<0, input_key_down, &inputs);
-	mlx_hook((*window).mlx_win, 3, 1L<<1, input_key_up, &inputs);
+	update_data.player = create_player();
+	mlx_hook(window->mlx_win, 17, 0, win_close, &update_data);
+	mlx_hook(window->mlx_win, 2, 1L<<0, input_key_down, &inputs);
+	mlx_hook(window->mlx_win, 3, 1L<<1, input_key_up, &inputs);
 	mlx_loop_hook(window->mlx, next_frame, &update_data);
-	mlx_loop((*window).mlx);
+	mlx_loop(window->mlx);
 	return (EXIT_SUCCESS);
 }
