@@ -6,7 +6,7 @@
 /*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 01:25:18 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/17 12:54:50 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/17 14:42:53 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ t_ILX_Window	*ilx_create_window(int size_x, int size_y, char *title)
 	t_ILX_Window	*window;
 
 	window = malloc(sizeof(t_ILX_Window));
+	if (!window)
+		return (NULL);
 	window->mlx = mlx_init();
 	window->mlx_win = mlx_new_window(window->mlx, size_x, size_y, title);
 	window->size_x = size_x;
@@ -35,6 +37,8 @@ t_ILX_Renderer	*ilx_create_renderer(t_ILX_Window *window)
 	t_ILX_Renderer	*renderer;
 
 	renderer = malloc(sizeof(t_ILX_Renderer));
+	if (!renderer)
+		return (NULL);
 	renderer->img = mlx_new_image(window->mlx, window->size_x, window->size_y);
 	renderer->addr = mlx_get_data_addr(renderer->img, &renderer->bits_per_px,
 									&renderer->line_len, &renderer->endian);

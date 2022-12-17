@@ -6,7 +6,7 @@
 /*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 01:10:24 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/17 14:24:42 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/17 14:53:02 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	input(t_Game_data *game)
 void	update(t_Game_data *game)
 {
 	player_update(game);
+	ft_printf("%d\n", ilx_intersection_rect(game->rect, game->player->player));
 	return ;
 }
 
