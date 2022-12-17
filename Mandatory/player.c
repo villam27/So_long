@@ -6,7 +6,7 @@
 /*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 13:35:58 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/17 14:10:43 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/17 14:23:12 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,19 @@ void	destroy_player(t_player *player)
 
 void	player_input(t_Game_data *data)
 {
-
+	if (data->inputs->left == 1)
+		data->player->player->x -= data->player->speed;
+	if (data->inputs->right == 1)
+		data->player->player->x += data->player->speed;
+	if (data->inputs->up == 1)
+		data->player->player->y -= data->player->speed;
+	if (data->inputs->down == 1)
+		data->player->player->y += data->player->speed;
 }
 
 void	player_update(t_Game_data *data)
 {
-
+	return ;
 }
 
 void	player_render(t_Game_data *data)

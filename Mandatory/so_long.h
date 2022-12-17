@@ -6,7 +6,7 @@
 /*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:53:59 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/17 14:06:09 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/17 14:19:13 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct	s_Game_data
 int 	input_key_down(int keycode, t_GAME_Input *inputs);
 int 	input_key_up(int keycode, t_GAME_Input *inputs);
 
+void	input(t_Game_data *game);
 void	update(t_Game_data *game);
 void	render(t_Game_data *game);
 int		win_close(t_Game_data *game);

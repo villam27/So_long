@@ -6,7 +6,7 @@
 /*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 01:10:24 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/17 14:11:24 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/17 14:24:42 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,15 @@ int input_key_up(int keycode, t_GAME_Input *inputs)
 		inputs->down = 0;
 }
 
+void	input(t_Game_data *game)
+{
+	player_input(game);
+}
+
 void	update(t_Game_data *game)
 {
-	if (game->inputs->left == 1)
-		game->rect->x -= 1;
-	if (game->inputs->right == 1)
-		game->rect->x += 1;
-	if (game->inputs->up == 1)
-		game->rect->y -= 1;
-	if (game->inputs->down == 1)
-		game->rect->y += 1;
+	player_update(game);
+	return ;
 }
 
 void	render(t_Game_data *game)

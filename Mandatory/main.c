@@ -6,7 +6,7 @@
 /*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:55:09 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/17 14:07:22 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/17 14:22:45 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static int next_frame(t_Game_data *data)
 {
 	if (data->inputs->exit)
 		win_close(data);
+	input(data);
 	render(data);
 	update(data);
 	return (0);
