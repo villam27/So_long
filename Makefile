@@ -6,7 +6,7 @@
 #    By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 23:55:26 by alboudje          #+#    #+#              #
-#    Updated: 2022/12/16 22:06:45 by alboudje         ###   ########.fr        #
+#    Updated: 2022/12/17 01:25:59 by alboudje         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,12 @@ LIBFT 			= 	libft/libft.a
 LIBFT_FILES		= 	libft/*.c libft/*.h libft/Makefile
 
 SRC_FOLDER		= 	Mandatory/
-SRC_FILES		= 	main.c
+SRC_FILES		= 	main.c \
+					so_long.c \
+					ILX.c \
+					ILX_Rect.c \
+					ILX_Window.c
+					
 SRC 			= 	$(addprefix $(SRC_FOLDER), $(SRC_FILES))
 
 INCLUDES_FILES 	= 	so_long.h
