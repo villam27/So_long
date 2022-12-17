@@ -6,7 +6,7 @@
 /*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 13:35:58 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/17 15:16:40 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/17 15:45:11 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,10 @@ void	player_collision(t_player *player, t_ILX_Rect *box)
 {
 		if (ilx_intersection_rect(player->player, box))
 		{
-			player->x = player->last_x;
-			player->y = player->last_y;
+			if (ilx_vertical_align_rect(player->player, box))
+				ft_printf("from vert\n");
+			else if (ilx_horizont_align_rect(player->player, box))
+				ft_printf("from hori\n");
 		}
 }
 

@@ -6,7 +6,7 @@
 /*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 00:57:48 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/17 14:57:59 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/17 15:41:50 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,20 @@ int	ilx_intersection_rect(t_ILX_Rect *r1, t_ILX_Rect *r2)
 {
 	if (r1->x < r2->x + r2->w && r2->x < r1->x + r1->w &&
 		r1->y < r2->y + r2->h && r2->y < r1->y + r1->h)
+		return (1);
+	return (0);
+}
+
+int	ilx_vertical_align_rect(t_ILX_Rect *r1, t_ILX_Rect *r2)
+{
+	if (r1->y < r2->y + r2->h && r1->y + r1->h > r2->y)
+		return (1);
+	return (0);
+}
+
+int	ilx_horizont_align_rect(t_ILX_Rect *r1, t_ILX_Rect *r2)
+{
+	if (r1->x < r2->x + r2->w && r1->x + r1->w > r2->x)
 		return (1);
 	return (0);
 }
