@@ -6,7 +6,7 @@
 /*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 01:10:24 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/17 15:42:35 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/17 16:23:23 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ void	update(t_Game_data *game)
 {
 	player_update(game);
 	//ft_printf("%d\n", ilx_intersection_rect(game->rect, game->player->player));
-	ft_printf("V :%d\n", ilx_vertical_align_rect(game->rect, game->player->player));
-	ft_printf("H :%d\n", ilx_horizont_align_rect(game->rect, game->player->player));
+	//ft_printf("V :%d\n", ilx_vertical_align_rect(game->rect, game->player->player));
+	//ft_printf("H :%d\n", ilx_horizont_align_rect(game->rect, game->player->player));
 	return ;
 }
 

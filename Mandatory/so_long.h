@@ -6,7 +6,7 @@
 /*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:53:59 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/17 15:04:10 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/17 17:14:21 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ typedef struct s_player
 	t_ILX_Rect	*player;
 	int			x;
 	int			y;
-	int			last_x;
-	int			last_y;
+	int			vert;
+	int			hori;
 	int			speed;
 	int			lifes;
 	int			dead;
