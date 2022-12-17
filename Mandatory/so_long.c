@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 01:10:24 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/17 01:16:36 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/17 12:30:58 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,12 @@ int input_key_up(int keycode, t_GAME_Input *inputs)
 		inputs->up = 0;
 	if (keycode == DOWN)
 		inputs->down = 0;
+}
+
+int		win_close(t_Game_data *game)
+{
+	ilx_destroy_renderer(game->win, game->ren);
+	ilx_destroy_window(game->win);
+	exit(EXIT_SUCCESS);
+	return (0);
 }

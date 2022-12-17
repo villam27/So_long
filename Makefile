@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: alboudje <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 23:55:26 by alboudje          #+#    #+#              #
-#    Updated: 2022/12/17 01:25:59 by alboudje         ###   ########.fr        #
+#    Updated: 2022/12/17 12:53:03 by alboudje         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,24 +29,25 @@ INCLUDES_FILES 	= 	so_long.h
 INCLUDES 		= 	$(addprefix $(SRC_FOLDER), $(INCLUDES_FILES))
 
 OBJ 			= 	${SRC:.c=.o}
-CFLAGS 			= 	-Wall #-Wextra -Werror #-fsanitize=address -g
+CFLAGS 			= 	-Wall -g3 #-fsanitize=address -g
+UNAME_S			:= $(shell uname -s)
 
-ifeq ($(UNAME_S), Darwin)
+#ifeq ($(UNAME_S), Darwin)
 MLX_FORLDER		= 	mlx/
 MLX_FLAGS		= 	-Lmlx -lmlx -framework OpenGL -framework AppKit
 MLX_CCFLAGS		= 	-Imlx
-else
-MLX_FOLDER		=	 mlx_linux/
-MLX_FLAGS		= 	-Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
-MLX_CCFLAGS		= 	-I/usr/include -Imlx_linux -O3
-endif
+#else
+#	MLX_FOLDER		=	 mlx_linux/
+#	MLX_FLAGS		= 	-Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+#	MLX_CCFLAGS		= 	-I/usr/include -Imlx_linux -O3
+#endif
 
 all : title $(NAME)
 
 $(NAME) : $(OBJ)
 	@make -C libft
-	@make -C $(MLX_FOLDER)
-	@$(CC) -o $(NAME) $(CFLAGS) $(OBJ) $(MLX_FLAGS) -lm $(MLX_FOLDER)libmlx.a $(LIBFT)
+	@make -C mlx/
+	@$(CC) -o $(NAME) $(CFLAGS) $(OBJ) $(MLX_FLAGS) -lm mlx/libmlx.a $(LIBFT)
 	@printf "$(GREEN)Creating $(CYAN)$(NAME)$(END): OK\n"
 
 %.o : %.c $(INCLUDES) Makefile $(LIBFT_FILES)
