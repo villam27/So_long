@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:53:59 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/17 17:17:56 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/18 00:55:18 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,18 @@
 # include "../libft/libft.h"
 # include "ILX.h"
 
-typedef struct	s_GAME_Input
+typedef struct	s_game_input
 {
 	int	left;
 	int	right;
 	int	up;
 	int	down;
 	int exit;
-}	t_GAME_Input;
+}	t_game_input;
 
 typedef struct s_player
 {
-	t_ILX_Rect	*player;
+	t_ilx_rect	*player;
 	int			x;
 	int			y;
 	int			vert;
@@ -37,20 +37,20 @@ typedef struct s_player
 	int			dead;
 }	t_player;
 
-typedef struct	s_Game_data
+typedef struct	s_game_data
 {
-	t_ILX_Window	*win;
-	t_ILX_Renderer	*ren;
-	t_ILX_Rect		*rect;
-	t_GAME_Input	*inputs;
+	t_ilx_window	*win;
+	t_ilx_renderer	*ren;
+	t_ilx_rect		*rect;
+	t_game_input	*inputs;
 	t_player		*player;
-}	t_Game_data;
+}	t_game_data;
 
-int 	input_key_down(int keycode, t_GAME_Input *inputs);
-int 	input_key_up(int keycode, t_GAME_Input *inputs);
+int 	input_key_down(int keycode, t_game_input *inputs);
+int 	input_key_up(int keycode, t_game_input *inputs);
 
-void	input(t_Game_data *game);
-void	update(t_Game_data *game);
-void	render(t_Game_data *game);
-int		win_close(t_Game_data *game);
+void	input(t_game_data *game);
+void	update(t_game_data *game);
+void	render(t_game_data *game);
+int		win_close(t_game_data *game);
 #endif

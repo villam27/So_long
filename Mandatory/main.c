@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:55:09 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/17 17:16:13 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/18 00:55:03 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include "player.h"
 
-static int next_frame(t_Game_data *data)
+static int next_frame(t_game_data *data)
 {
 	if (data->inputs->exit)
 		win_close(data);
@@ -25,11 +25,11 @@ static int next_frame(t_Game_data *data)
 
 int	main(void)
 {
-	t_ILX_Window	*window;
-	t_ILX_Renderer	*renderer;
-	t_ILX_Rect		rect = {20, 500, 600, 50};
-	t_GAME_Input	inputs = {0, 0, 0, 0, 0};
-	t_Game_data		update_data;
+	t_ilx_window	*window;
+	t_ilx_renderer	*renderer;
+	t_ilx_rect		rect = {20, 500, 600, 50};
+	t_game_input	inputs = {0, 0, 0, 0, 0};
+	t_game_data		update_data;
 
 	window = ilx_create_window(800, 600, "so_long");
 	renderer = ilx_create_renderer(window);

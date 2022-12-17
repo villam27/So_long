@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 01:10:24 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/17 16:23:23 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/18 00:55:03 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include "player.h"
 
-int input_key_down(int keycode, t_GAME_Input *inputs)
+int input_key_down(int keycode, t_game_input *inputs)
 {
 	if (keycode == ESC)
 	{
@@ -31,7 +31,7 @@ int input_key_down(int keycode, t_GAME_Input *inputs)
 	return (0);
 }
 
-int input_key_up(int keycode, t_GAME_Input *inputs)
+int input_key_up(int keycode, t_game_input *inputs)
 {
 	if (keycode == LEFT)
 		inputs->left = 0;
@@ -43,12 +43,12 @@ int input_key_up(int keycode, t_GAME_Input *inputs)
 		inputs->down = 0;
 }
 
-void	input(t_Game_data *game)
+void	input(t_game_data *game)
 {
 	player_input(game);
 }
 
-void	update(t_Game_data *game)
+void	update(t_game_data *game)
 {
 	player_update(game);
 	//ft_printf("%d\n", ilx_intersection_rect(game->rect, game->player->player));
@@ -57,17 +57,17 @@ void	update(t_Game_data *game)
 	return ;
 }
 
-void	render(t_Game_data *game)
+void	render(t_game_data *game)
 {	
 	ilx_clear_renderer(game->ren);
-	ILX_draw_px(game->ren, 10, 10, 0xff0000);
-	ILX_draw_rect(game->ren, *game->rect, 0xff4444);
+	ilx_draw_px(game->ren, 10, 10, 0xff0000);
+	ilx_draw_rect(game->ren, *game->rect, 0xff4444);
 	player_render(game);
 	mlx_put_image_to_window(game->win->mlx, game->win->mlx_win,
 							game->ren->img, 0, 0);
 }
 
-int		win_close(t_Game_data *game)
+int		win_close(t_game_data *game)
 {
 	destroy_player(game->player);
 	ilx_destroy_renderer(game->win, game->ren);

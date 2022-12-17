@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ILX_Window.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 01:25:18 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/17 16:15:41 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/18 00:51:28 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ILX_Window.h"
 
-t_ILX_Window	*ilx_create_window(int size_x, int size_y, char *title)
+t_ilx_window	*ilx_create_window(int size_x, int size_y, char *title)
 {
-	t_ILX_Window	*window;
+	t_ilx_window	*window;
 
-	window = malloc(sizeof(t_ILX_Window));
+	window = malloc(sizeof(t_ilx_window));
 	if (!window)
 		return (NULL);
 	window->mlx = mlx_init();
@@ -26,17 +26,17 @@ t_ILX_Window	*ilx_create_window(int size_x, int size_y, char *title)
 	return (window);
 }
 
-void	ilx_destroy_window(t_ILX_Window *window)
+void	ilx_destroy_window(t_ilx_window *window)
 {
 	mlx_destroy_window(window->mlx, window->mlx_win);
 	free(window);
 }
 
-t_ILX_Renderer	*ilx_create_renderer(t_ILX_Window *window)
+t_ilx_renderer	*ilx_create_renderer(t_ilx_window *window)
 {
-	t_ILX_Renderer	*renderer;
+	t_ilx_renderer	*renderer;
 
-	renderer = malloc(sizeof(t_ILX_Renderer));
+	renderer = malloc(sizeof(t_ilx_renderer));
 	if (!renderer)
 		return (NULL);
 	renderer->img = mlx_new_image(window->mlx, window->size_x, window->size_y);
@@ -45,13 +45,13 @@ t_ILX_Renderer	*ilx_create_renderer(t_ILX_Window *window)
 	return (renderer);
 }
 
-void	ilx_destroy_renderer(t_ILX_Window *win, t_ILX_Renderer *renderer)
+void	ilx_destroy_renderer(t_ilx_window *win, t_ilx_renderer *renderer)
 {
 	mlx_destroy_image(win->mlx, renderer->img);
 	free(renderer);	
 }
 
-void	ilx_clear_renderer(t_ILX_Renderer *rend)
+void	ilx_clear_renderer(t_ilx_renderer *rend)
 {
 	int	w;
 	int	h;
@@ -62,7 +62,7 @@ void	ilx_clear_renderer(t_ILX_Renderer *rend)
 		w = 0;
 		while (w < 800)
 		{
-			ILX_draw_px(rend, w, h, 0);
+			ilx_draw_px(rend, w, h, 0);
 			w++;
 		}
 		h++;

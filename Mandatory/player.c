@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 13:35:58 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/17 17:21:24 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/18 00:54:30 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	player_fall(t_player *player)
 		player->y += 2;
 }
 
-void	player_collision(t_player *player, t_ILX_Rect *box)
+void	player_collision(t_player *player, t_ilx_rect *box)
 {
 	int	push_back;
 
@@ -80,7 +80,7 @@ void	player_collision(t_player *player, t_ILX_Rect *box)
 	}
 }
 
-void	player_input(t_Game_data *data)
+void	player_input(t_game_data *data)
 {
 	data->player->vert = ilx_vertical_align_rect(data->player->player, data->rect);
 	data->player->hori = ilx_horizont_align_rect(data->player->player, data->rect);
@@ -90,11 +90,9 @@ void	player_input(t_Game_data *data)
 		data->player->x += data->player->speed;
 	if (data->inputs->up == 1)
 		data->player->y -= data->player->speed + 2;
-	//if (data->inputs->down == 1)
-	//	data->player->y += data->player->speed;
 }
 
-void	player_update(t_Game_data *data)
+void	player_update(t_game_data *data)
 {
 	player_fall(data->player);
 	data->player->player->y = data->player->y;
@@ -104,7 +102,7 @@ void	player_update(t_Game_data *data)
 	data->player->player->y = data->player->y;
 }
 
-void	player_render(t_Game_data *data)
+void	player_render(t_game_data *data)
 {
-	ILX_draw_rect(data->ren, *data->player->player, 0xff7777);
+	ilx_draw_rect(data->ren, *data->player->player, 0xff7777);
 }
