@@ -6,7 +6,7 @@
 /*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:55:09 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/17 12:47:05 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/17 13:26:55 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,8 @@ static int next_frame(t_Game_data *data)
 {
 	if (data->inputs->exit)
 		win_close(data);
-	ilx_clear_renderer(data->ren);
-	ILX_draw_px(data->ren, 10, 10, 0xff0000);
-	ILX_draw_rect(data->ren, *data->rect, 0xff4444);
-	mlx_put_image_to_window(data->win->mlx, data->win->mlx_win, data->ren->img, 0, 0);
-	if (data->inputs->left == 1)
-		data->rect->x -= 1;
-	if (data->inputs->right == 1)
-		data->rect->x += 1;
-	if (data->inputs->up == 1)
-		data->rect->y -= 1;
-	if (data->inputs->down == 1)
-		data->rect->y += 1;
+	render(data);
+	update(data);
 	return (0);
 }
 

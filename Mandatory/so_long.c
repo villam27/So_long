@@ -6,7 +6,7 @@
 /*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 01:10:24 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/17 12:30:58 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/17 13:26:45 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,27 @@ int input_key_up(int keycode, t_GAME_Input *inputs)
 		inputs->up = 0;
 	if (keycode == DOWN)
 		inputs->down = 0;
+}
+
+void	update(t_Game_data *game)
+{
+	if (game->inputs->left == 1)
+		game->rect->x -= 1;
+	if (game->inputs->right == 1)
+		game->rect->x += 1;
+	if (game->inputs->up == 1)
+		game->rect->y -= 1;
+	if (game->inputs->down == 1)
+		game->rect->y += 1;
+}
+
+void	render(t_Game_data *game)
+{	
+	ilx_clear_renderer(game->ren);
+	ILX_draw_px(game->ren, 10, 10, 0xff0000);
+	ILX_draw_rect(game->ren, *game->rect, 0xff4444);
+	mlx_put_image_to_window(game->win->mlx, game->win->mlx_win,
+							game->ren->img, 0, 0);
 }
 
 int		win_close(t_Game_data *game)
