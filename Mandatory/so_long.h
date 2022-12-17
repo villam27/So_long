@@ -6,7 +6,7 @@
 /*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:53:59 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/17 17:14:21 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/17 17:17:56 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_player
 	int			y;
 	int			vert;
 	int			hori;
+	int			fall;
 	int			speed;
 	int			lifes;
 	int			dead;

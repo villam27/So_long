@@ -6,7 +6,7 @@
 /*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:55:09 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/17 16:00:43 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/17 17:16:13 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(void)
 {
 	t_ILX_Window	*window;
 	t_ILX_Renderer	*renderer;
-	t_ILX_Rect		rect = {20, 20, 50, 50};
+	t_ILX_Rect		rect = {20, 500, 600, 50};
 	t_GAME_Input	inputs = {0, 0, 0, 0, 0};
 	t_Game_data		update_data;
 

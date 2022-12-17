@@ -6,7 +6,7 @@
 /*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 13:35:58 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/17 17:14:38 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/17 17:21:24 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_player	*create_player()
 	player->y = 100;
 	player->vert = 0;
 	player->hori = 0;
+	player->fall = 1;
 	player->speed = 3;
 	player->lifes = 3;
 	player->dead = 0;
@@ -34,6 +35,12 @@ void	destroy_player(t_player *player)
 {
 	ilx_free_rect(player->player);
 	free(player);
+}
+
+void	player_fall(t_player *player)
+{
+	if (player->fall)
+		player->y += 2;
 }
 
 void	player_collision(t_player *player, t_ILX_Rect *box)
@@ -67,6 +74,7 @@ void	player_collision(t_player *player, t_ILX_Rect *box)
 			{
 				push_back = box->y + box->h - player->y;
 				player->y += push_back;
+				player->fall = 0;
 			}
 		}
 	}
@@ -76,19 +84,19 @@ void	player_input(t_Game_data *data)
 {
 	data->player->vert = ilx_vertical_align_rect(data->player->player, data->rect);
 	data->player->hori = ilx_horizont_align_rect(data->player->player, data->rect);
-	//data->player->last_y = data->player->y;
 	if (data->inputs->left == 1)
 		data->player->x -= data->player->speed;
 	if (data->inputs->right == 1)
 		data->player->x += data->player->speed;
 	if (data->inputs->up == 1)
-		data->player->y -= data->player->speed;
-	if (data->inputs->down == 1)
-		data->player->y += data->player->speed;
+		data->player->y -= data->player->speed + 2;
+	//if (data->inputs->down == 1)
+	//	data->player->y += data->player->speed;
 }
 
 void	player_update(t_Game_data *data)
 {
+	player_fall(data->player);
 	data->player->player->y = data->player->y;
 	data->player->player->x = data->player->x;
 	player_collision(data->player, data->rect);
