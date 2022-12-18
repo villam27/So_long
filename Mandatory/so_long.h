@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:53:59 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/18 00:55:18 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/18 01:36:27 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,16 @@ typedef struct	s_game_data
 	t_game_input	*inputs;
 	t_player		*player;
 }	t_game_data;
+
+typedef struct	s_level_data
+{
+	char		**map;
+	int			objects;
+	t_player	*players;
+	t_ilx_rect	*rects;
+	t_ilx_rect	*boxs;
+}	t_level_data;
+
 
 int 	input_key_down(int keycode, t_game_input *inputs);
 int 	input_key_up(int keycode, t_game_input *inputs);
