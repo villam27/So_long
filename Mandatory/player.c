@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 13:35:58 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/18 12:14:38 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/18 13:38:40 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	player_input(t_game_data *data)
 
 void	player_update(t_game_data *data)
 {
-	player_fall(data->player);
+	//player_fall(data->player);
 	data->player->player->y = data->player->y;
 	data->player->player->x = data->player->x;
 	//player_collision(data->player, data->rect);

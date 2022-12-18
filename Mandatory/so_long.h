@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:53:59 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/18 12:44:37 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/18 13:47:16 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct	s_level_data
 {
 	char		**map;
 	int			objects;
-	t_player	*players;
+	t_player	*player;
 	t_ilx_rect	*rects;
 	t_ilx_rect	*boxs;
 }	t_level_data;
@@ -66,8 +66,9 @@ int		win_close(t_game_data *game);
 
 t_game_data	*ini_game(t_ilx_window *w, t_ilx_renderer *r, t_game_input *i);
 void		close_game(t_game_data *game);
-void		add_level_game(t_game_data *game, t_level_data *level);
+void		addlevel_game(t_game_data **game, t_level_data *level);
 
 t_level_data	*create_level();
+void			render_level(t_game_data *game);
 void			free_level(t_level_data *level);
 #endif
