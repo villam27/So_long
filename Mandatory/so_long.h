@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:53:59 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/18 01:44:32 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/18 12:03:13 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct	s_game_data
 {
 	t_ilx_window	*win;
 	t_ilx_renderer	*ren;
-	t_ilx_rect		*rect;
+	//t_ilx_rect		*rect;
 	t_game_input	*inputs;
 	t_player		*player;
 }	t_game_data;
@@ -63,4 +63,6 @@ void	input(t_game_data *game);
 void	update(t_game_data *game);
 void	render(t_game_data *game);
 int		win_close(t_game_data *game);
+
+t_game_data	*ini_game(t_ilx_window *w, t_ilx_renderer *r, t_game_input *i);
 #endif

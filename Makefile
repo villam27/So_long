@@ -6,7 +6,7 @@
 #    By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 23:55:26 by alboudje          #+#    #+#              #
-#    Updated: 2022/12/18 01:18:52 by alboudje         ###   ########.fr        #
+#    Updated: 2022/12/18 11:59:11 by alboudje         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRC_FOLDER		= 	Mandatory/
 SRC_FILES		= 	main.c \
 					so_long.c \
 					player.c \
+					game.c \
 					ILX.c \
 					ILX_Rect.c \
 					ILX_Window.c
@@ -30,7 +31,7 @@ INCLUDES_FILES 	= 	so_long.h
 INCLUDES 		= 	$(addprefix $(SRC_FOLDER), $(INCLUDES_FILES))
 
 OBJ 			= 	${SRC:.c=.o}
-CFLAGS 			= 	-Wall -Wextra #-g3 -fsanitize=address
+CFLAGS 			= 	-Wall -Wextra -g3 -fsanitize=address
 UNAME_S			:=	$(shell uname -s)
 
 ifeq ($(UNAME_S), Linux)

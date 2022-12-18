@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 13:35:58 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/18 01:55:16 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/18 12:14:38 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ void	player_collision(t_player *player, t_ilx_rect *box)
 
 void	player_input(t_game_data *data)
 {
-	data->player->vert = ilx_vertical_align_rect(data->player->player, data->rect);
-	data->player->hori = ilx_horizont_align_rect(data->player->player, data->rect);
+	//data->player->vert = ilx_vertical_align_rect(data->player->player, data->rect);
+	//data->player->hori = ilx_horizont_align_rect(data->player->player, data->rect);
 	if (data->inputs->left == 1)
 		data->player->x -= data->player->speed;
 	if (data->inputs->right == 1)
@@ -96,7 +96,7 @@ void	player_update(t_game_data *data)
 	player_fall(data->player);
 	data->player->player->y = data->player->y;
 	data->player->player->x = data->player->x;
-	player_collision(data->player, data->rect);
+	//player_collision(data->player, data->rect);
 	data->player->player->x = data->player->x;
 	data->player->player->y = data->player->y;
 }

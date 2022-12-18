@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 01:10:24 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/18 01:12:55 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/18 12:00:07 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,6 @@ void	input(t_game_data *game)
 void	update(t_game_data *game)
 {
 	player_update(game);
-	//ft_printf("%d\n", ilx_intersection_rect(game->rect, game->player->player));
-	//ft_printf("V :%d\n", ilx_vertical_align_rect(game->rect, game->player->player));
-	//ft_printf("H :%d\n", ilx_horizont_align_rect(game->rect, game->player->player));
 	return ;
 }
 
@@ -61,7 +58,7 @@ void	render(t_game_data *game)
 {	
 	ilx_clear_renderer(game->ren);
 	ilx_draw_px(game->ren, 10, 10, 0xff0000);
-	ilx_draw_rect(game->ren, *game->rect, 0xff4444);
+	//ilx_draw_rect(game->ren, *game->rect, 0xff4444);
 	player_render(game);
 	mlx_put_image_to_window(game->win->mlx, game->win->mlx_win,
 							game->ren->img, 0, 0);
