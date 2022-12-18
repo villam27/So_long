@@ -6,7 +6,7 @@
 #    By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 23:55:26 by alboudje          #+#    #+#              #
-#    Updated: 2022/12/18 11:59:11 by alboudje         ###   ########.fr        #
+#    Updated: 2022/12/18 12:44:49 by alboudje         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRC_FILES		= 	main.c \
 					so_long.c \
 					player.c \
 					game.c \
+					level.c \
 					ILX.c \
 					ILX_Rect.c \
 					ILX_Window.c

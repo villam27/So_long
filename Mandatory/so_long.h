@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:53:59 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/18 12:39:18 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/18 12:44:37 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,6 @@ typedef struct s_player
 	int			lifes;
 }	t_player;
 
-typedef struct	s_game_data
-{
-	t_ilx_window	*win;
-	t_ilx_renderer	*ren;
-	t_game_input	*inputs;
-	t_level_data	*levels;
-	t_player		*player;
-}	t_game_data;
 
 typedef struct	s_level_data
 {
@@ -55,6 +47,14 @@ typedef struct	s_level_data
 	t_ilx_rect	*boxs;
 }	t_level_data;
 
+typedef struct	s_game_data
+{
+	t_ilx_window	*win;
+	t_ilx_renderer	*ren;
+	t_game_input	*inputs;
+	t_level_data	*levels;
+	t_player		*player;
+}	t_game_data;
 
 int 	input_key_down(int keycode, t_game_input *inputs);
 int 	input_key_up(int keycode, t_game_input *inputs);

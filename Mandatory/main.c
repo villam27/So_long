@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:55:09 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/18 12:15:49 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/18 12:44:06 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(void)
 {
 	t_ilx_window	*window;
 	t_ilx_renderer	*renderer;
-	t_ilx_rect		rect = {20, 500, 600, 50};
+	//t_ilx_rect		rect = {20, 500, 600, 50};
 	t_game_input	inputs = {0, 0, 0, 0, 0};
 	t_game_data		*game;
 
