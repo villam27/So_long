@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 01:10:24 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/18 12:00:07 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/18 12:24:38 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,7 @@ void	render(t_game_data *game)
 
 int		win_close(t_game_data *game)
 {
-	destroy_player(game->player);
-	ilx_destroy_renderer(game->win, game->ren);
-	ilx_destroy_window(game->win);
+	close_game(game);
 	exit(EXIT_SUCCESS);
 	return (0);
 }
