@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 01:10:24 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/18 13:54:25 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/18 16:00:41 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	render(t_game_data *game)
 	player_render(game);
 	mlx_put_image_to_window(game->win->mlx, game->win->mlx_win,
 							game->ren->img, 0, 0);
+	mlx_do_sync(game->win->mlx);
 }
 
 int		win_close(t_game_data *game)

@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 12:27:27 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/18 14:15:12 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/18 14:23:56 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	render_level(t_game_data *game)
 	}
 }
 
-void			free_level(t_level_data *level)
+void	free_level(t_level_data *level)
 {
 	free_all(level->map);
 	destroy_player(level->player);

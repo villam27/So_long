@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:55:09 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/18 12:59:34 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/18 15:56:31 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,6 @@ int	main(void)
 	}
 	else
 		return (EXIT_FAILURE);
+	//win_close(game);
 	return (EXIT_SUCCESS);
 }
