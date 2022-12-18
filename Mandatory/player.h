@@ -6,15 +6,15 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 13:36:10 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/18 00:54:30 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/18 18:34:02 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PLAYER_H
-#define PLAYER_H
-#include "so_long.h"
+# define PLAYER_H
+# include "so_long.h"
 
-t_player	*create_player();
+t_player	*create_player(void);
 void		destroy_player(t_player *player);
 
 void		player_fall(t_player *player);

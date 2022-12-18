@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 00:43:25 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/18 00:51:28 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/18 18:33:43 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 # include <mlx.h>
 # include "ILX_Window.h"
 
-typedef struct	s_ilx_Point
+typedef struct s_ilx_Point
 {
 	int	x;
 	int	y;
 }	t_ilx_point;
 
-typedef struct	s_ilx_Rect
+typedef struct s_ilx_Rect
 {
 	int	x;
 	int	y;

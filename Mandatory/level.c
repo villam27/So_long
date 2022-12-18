@@ -6,19 +6,19 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 12:27:27 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/18 16:31:29 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/18 18:51:54 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include "player.h"
 
-t_level_data	*create_level()
+t_lvl_data	*create_level(void)
 {
-	t_level_data	*level;
-	int				i;
+	t_lvl_data	*level;
+	int			i;
 
-	level = malloc(sizeof(t_level_data));
+	level = malloc(sizeof(t_lvl_data));
 	if (!level)
 		return (NULL);
 	level->map = NULL;
@@ -48,12 +48,13 @@ void	render_level(t_game_data *game)
 	}
 }
 
-void	free_level(t_level_data *level)
+/*
+*	!!! DONT FORGET TO FREE THE MAP AND THE PLAYER !!!
+*/
+void	free_level(t_lvl_data *level)
 {
 	int	i;
 
-	//free_all(level->map);
-	//destroy_player(level->player);
 	i = 0;
 	while (level->boxs[i])
 	{

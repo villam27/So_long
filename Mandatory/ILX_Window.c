@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 01:25:18 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/18 00:51:28 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/18 18:37:04 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,14 @@ t_ilx_renderer	*ilx_create_renderer(t_ilx_window *window)
 		return (NULL);
 	renderer->img = mlx_new_image(window->mlx, window->size_x, window->size_y);
 	renderer->addr = mlx_get_data_addr(renderer->img, &renderer->bits_per_px,
-									&renderer->line_len, &renderer->endian);
+			&renderer->line_len, &renderer->endian);
 	return (renderer);
 }
 
 void	ilx_destroy_renderer(t_ilx_window *win, t_ilx_renderer *renderer)
 {
 	mlx_destroy_image(win->mlx, renderer->img);
-	free(renderer);	
+	free(renderer);
 }
 
 void	ilx_clear_renderer(t_ilx_renderer *rend)
