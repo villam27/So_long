@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 13:35:58 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/18 13:38:40 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/18 16:32:17 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_player	*create_player()
 	if (!player)
 		return (NULL);
 	player->player = ilx_create_rect(100, 100, 50, 50);
-	player->x = 100;
+	player->x = 200;
 	player->y = 100;
 	player->vert = 0;
 	player->hori = 0;

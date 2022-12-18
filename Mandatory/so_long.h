@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:53:59 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/18 13:47:16 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/18 16:10:12 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct	s_level_data
 	int			objects;
 	t_player	*player;
 	t_ilx_rect	*rects;
-	t_ilx_rect	*boxs;
+	t_ilx_rect	**boxs;
 }	t_level_data;
 
 typedef struct	s_game_data
