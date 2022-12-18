@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 13:35:58 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/18 16:32:17 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/18 17:02:53 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,10 @@ t_player	*create_player()
 	player = malloc(sizeof(t_player));
 	if (!player)
 		return (NULL);
-	player->player = ilx_create_rect(100, 100, 50, 50);
-	player->x = 200;
+	player->player = ilx_create_rect(300, 100, 50, 50);
+	player->x = 300;
 	player->y = 100;
-	player->vert = 0;
-	player->hori = 0;
+	player->lastp = ilx_create_rect(300, 100, 50, 50);
 	player->fall = 1;
 	player->gravity = 3;
 	player->speed = 3;
@@ -34,6 +33,7 @@ t_player	*create_player()
 void	destroy_player(t_player *player)
 {
 	ilx_free_rect(player->player);
+	ilx_free_rect(player->lastp);
 	free(player);
 }
 
@@ -44,7 +44,7 @@ void	player_collision(t_player *player, t_ilx_rect *box)
 	push_back = 0;
 	if (ilx_intersection_rect(player->player, box))
 	{
-		if (player->vert)
+		if (ilx_vertical_align_rect(player->lastp, box))
 		{
 			if (player->x + player->player->w/2 < box->x + box->w / 2)
 			{
@@ -57,7 +57,7 @@ void	player_collision(t_player *player, t_ilx_rect *box)
 				player->x += push_back;
 			}
 		}
-		else if (player->hori)
+		else if (ilx_horizont_align_rect(player->lastp, box))
 		{
 			if (player->player->y + player->player->h/2 < box->y + box->h / 2)
 			{
@@ -79,10 +79,16 @@ void	player_input(t_game_data *data)
 {
 	//data->player->vert = ilx_vertical_align_rect(data->player->player, data->rect);
 	//data->player->hori = ilx_horizont_align_rect(data->player->player, data->rect);
+	data->player->lastp->x = data->player->x;
+	data->player->lastp->y = data->player->y;
 	if (data->inputs->left == 1)
 		data->player->x -= data->player->speed;
 	if (data->inputs->right == 1)
 		data->player->x += data->player->speed;
+	//if (data->inputs->up == 1)
+	//	data->player->y -= data->player->speed;
+	//if (data->inputs->down == 1)
+	//	data->player->y += data->player->speed;	
 	if (data->inputs->up == 1 && !data->player->fall)
 	{
 		data->player->fall = 1;
@@ -93,10 +99,11 @@ void	player_input(t_game_data *data)
 
 void	player_update(t_game_data *data)
 {
-	//player_fall(data->player);
+	player_fall(data->player);
 	data->player->player->y = data->player->y;
 	data->player->player->x = data->player->x;
-	//player_collision(data->player, data->rect);
+	for (int i = 0; i < 20; i++)
+		player_collision(data->player, data->levels->boxs[i]);
 	data->player->player->x = data->player->x;
 	data->player->player->y = data->player->y;
 }
@@ -108,7 +115,7 @@ void	player_render(t_game_data *data)
 
 void	player_fall(t_player *player)
 {
-	if (player->gravity < 2)
+	if (player->gravity < 3)
 		player->gravity += 1;
 	player->y += player->gravity;
 }
