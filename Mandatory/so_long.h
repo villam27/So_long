@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:53:59 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/18 01:36:27 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/18 01:44:32 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ typedef struct s_player
 	int			vert;
 	int			hori;
 	int			fall;
+	int			gravity;
 	int			speed;
 	int			lifes;
-	int			dead;
 }	t_player;
 
 typedef struct	s_game_data

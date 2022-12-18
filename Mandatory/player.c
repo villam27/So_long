@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 13:35:58 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/18 00:54:30 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/18 01:55:16 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ t_player	*create_player()
 	player->vert = 0;
 	player->hori = 0;
 	player->fall = 1;
+	player->gravity = 3;
 	player->speed = 3;
 	player->lifes = 3;
-	player->dead = 0;
 	return (player);
 }
 
@@ -35,12 +35,6 @@ void	destroy_player(t_player *player)
 {
 	ilx_free_rect(player->player);
 	free(player);
-}
-
-void	player_fall(t_player *player)
-{
-	if (player->fall)
-		player->y += 2;
 }
 
 void	player_collision(t_player *player, t_ilx_rect *box)
@@ -69,12 +63,13 @@ void	player_collision(t_player *player, t_ilx_rect *box)
 			{
 				push_back = player->y + player->player->h - box->y;
 				player->y -= push_back;
+				player->gravity = 0;
+				player->fall = 0;
 			}
 			else
 			{
 				push_back = box->y + box->h - player->y;
 				player->y += push_back;
-				player->fall = 0;
 			}
 		}
 	}
@@ -88,8 +83,12 @@ void	player_input(t_game_data *data)
 		data->player->x -= data->player->speed;
 	if (data->inputs->right == 1)
 		data->player->x += data->player->speed;
-	if (data->inputs->up == 1)
-		data->player->y -= data->player->speed + 2;
+	if (data->inputs->up == 1 && !data->player->fall)
+	{
+		data->player->fall = 1;
+		data->player->gravity = -20;
+		data->inputs->up = 0;
+	}
 }
 
 void	player_update(t_game_data *data)
@@ -105,4 +104,11 @@ void	player_update(t_game_data *data)
 void	player_render(t_game_data *data)
 {
 	ilx_draw_rect(data->ren, *data->player->player, 0xff7777);
+}
+
+void	player_fall(t_player *player)
+{
+	if (player->gravity < 2)
+		player->gravity += 1;
+	player->y += player->gravity;
 }
