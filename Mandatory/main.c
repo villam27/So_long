@@ -6,12 +6,13 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:55:09 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/18 18:36:48 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/18 21:06:43 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include "player.h"
+#include "map.h"
 
 static int	next_frame(t_game_data *data)
 {
@@ -45,7 +46,7 @@ static int	init_all(t_ilx_window **win, t_ilx_renderer **ren,
 	return (0);
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_ilx_window	*window;
 	t_ilx_renderer	*renderer;
