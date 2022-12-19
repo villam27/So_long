@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:53:59 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/18 18:54:26 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/19 16:21:45 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define SO_LONG_H
 # include "../libft/libft.h"
 # include "ILX.h"
+# include "map.h"
+
+typedef struct s_map	t_map;
 
 typedef struct s_game_input
 {
@@ -38,7 +41,7 @@ typedef struct s_player
 
 typedef struct s_lvl_data
 {
-	char		**map;
+	t_map		*map;
 	int			objects;
 	t_player	*player;
 	t_ilx_rect	*rects;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 13:35:58 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/18 18:45:57 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/19 17:12:38 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_player	*create_player(void)
 	player->lastp = ilx_create_rect(300, 100, 50, 50);
 	player->fall = 1;
 	player->gravity = 3;
-	player->speed = 3;
+	player->speed = 6;
 	player->lifes = 3;
 	return (player);
 }
@@ -48,7 +48,7 @@ void	player_input(t_game_data *data)
 	if (data->inputs->up == 1 && !data->player->fall)
 	{
 		data->player->fall = 1;
-		data->player->gravity += -16;
+		data->player->gravity -= 17;
 		data->inputs->up = 0;
 	}
 }

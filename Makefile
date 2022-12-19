@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: alboudje <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 23:55:26 by alboudje          #+#    #+#              #
-#    Updated: 2022/12/18 18:46:52 by alboudje         ###   ########.fr        #
+#    Updated: 2022/12/19 14:40:47 by alboudje         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRC_FILES		= 	main.c \
 					game.c \
 					level.c \
 					inputs.c \
+					map.c \
 					ILX.c \
 					ILX_Rect.c \
 					ILX_Rect_utils.c \
