@@ -6,7 +6,7 @@
 /*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 13:27:12 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/16 11:24:59 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/19 12:09:50 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,13 @@ ssize_t	ft_ullputnbrbase_fd(unsigned long long int n, char *base, int fd);
 ssize_t	ft_uputnbr_fd(unsigned int n, int fd);
 char	*ft_strchr(const char *s, int c);
 int		ft_strtoi(const char *str, char *endchar);
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
+
+char	*ft_gnlstrjoin(char *s1, char *s2, size_t i);
+char	*ft_gnlstrcat(char *dest, char *src);
+char	*get_next_line(int fd);
 
 #endif
