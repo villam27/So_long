@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   level.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 12:27:27 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/19 16:58:30 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/19 22:25:04 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,22 +45,22 @@ void	render_level(t_game_data *game)
 	int	k;
 
 	i = 0;
-	j = 0;
 	k = 0;
-	ft_printf(">>>[[[[[%d\n", game->levels->map->map[3][1]);
-	for (i = 0; i < game->levels->map->data->cols; i++)
+	while (i < game->levels->map->data->cols)
 	{
-		for (j = 0; j < game->levels->map->data->rows; j++)
+		j = 0;
+		while (j < game->levels->map->data->rows)
 		{
 			if (game->levels->map->map[j][i] == 1 + '0')
 			{
-				ft_printf("test\n");
 				game->levels->boxs[k]->x = 64 * i;
 				game->levels->boxs[k]->y = 64 * j;
 				ilx_draw_rect(game->ren, *game->levels->boxs[k], 0xff0000);
 				k++;
 			}
+			j++;
 		}
+		i++;
 	}	
 }
 

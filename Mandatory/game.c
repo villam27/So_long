@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 11:49:37 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/19 16:00:09 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/19 22:05:26 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	addlevel_game(t_game_data **game, t_lvl_data *level)
 
 void	close_game(t_game_data *game)
 {
+	destroy_map(game->levels->map);
 	destroy_player(game->player);
 	ilx_destroy_renderer(game->win, game->ren);
 	ilx_destroy_window(game->win);
