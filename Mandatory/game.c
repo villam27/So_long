@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 11:49:37 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/20 16:44:38 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/20 23:47:18 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ void	close_game(t_game_data *game)
 {
 	if (game->player)
 		destroy_player(game->player);
-	if (game->inputs)
-		free(game->inputs);
 	if (game->levels)
 		free_level(game->levels);
 	if (game->ren)

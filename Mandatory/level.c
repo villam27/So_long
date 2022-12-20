@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   level.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 12:27:27 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/20 16:46:07 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/20 23:47:51 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 t_lvl_data	*create_level(void)
 {
 	t_lvl_data	*level;
-	int			i;
 
 	level = malloc(sizeof(t_lvl_data));
 	if (!level)

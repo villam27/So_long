@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 20:45:18 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/20 16:45:43 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/20 23:47:10 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ t_map	*create_map(int fd, t_map_data *data)
 
 int	check_map(t_map *map)
 {
+	return (1);
 }
 
 void	destroy_map(t_map *map)
