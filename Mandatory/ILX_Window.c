@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ILX_Window.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 01:25:18 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/18 18:37:04 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/20 14:34:02 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ t_ilx_window	*ilx_create_window(int size_x, int size_y, char *title)
 void	ilx_destroy_window(t_ilx_window *window)
 {
 	mlx_destroy_window(window->mlx, window->mlx_win);
-	free(window);
+	if (window)
+		free(window);
 }
 
 t_ilx_renderer	*ilx_create_renderer(t_ilx_window *window)
@@ -47,8 +48,10 @@ t_ilx_renderer	*ilx_create_renderer(t_ilx_window *window)
 
 void	ilx_destroy_renderer(t_ilx_window *win, t_ilx_renderer *renderer)
 {
-	mlx_destroy_image(win->mlx, renderer->img);
-	free(renderer);
+	if (renderer)
+		mlx_destroy_image(win->mlx, renderer->img);
+	if (renderer)
+		free(renderer);
 }
 
 void	ilx_clear_renderer(t_ilx_renderer *rend)

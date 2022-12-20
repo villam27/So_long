@@ -6,7 +6,7 @@
 /*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 20:45:18 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/20 14:10:50 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/20 14:31:21 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_map	*open_map(char *path)
 	t_map_data	*map_data;
 	t_map		*map;
 
+	map == NULL;
 	map_fd = open(path, O_RDONLY);
 	if (map_fd == -1)
 	{
@@ -122,13 +123,22 @@ void	destroy_map(t_map *map)
 	int	i;
 
 	i = 0;
-	while (map->boxs[i])
+	if (map)
 	{
-		ilx_free_rect(map->boxs[i]);
-		i++;
+		while (map->boxs[i])
+		{
+			if (map->boxs[i])
+			{
+				ilx_free_rect(map->boxs[i]);
+				i++;
+			}
+		}
+		if (map->boxs)
+			free(map->boxs);
+		if (map->map)
+			free_all(map->map);
+		if (map->data)
+			free(map->data);
+		free(map);
 	}
-	free(map->boxs);
-	free_all(map->map);
-	free(map->data);
-	free(map);
 }

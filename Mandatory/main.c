@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:55:09 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/18 21:06:43 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/20 14:36:00 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,7 @@ static int	init_all(t_ilx_window **win, t_ilx_renderer **ren,
 	}
 	*game = ini_game(*win, *ren, in);
 	if (!(*game))
-	{
-		ilx_destroy_renderer(*win, *ren);
-		ilx_destroy_window(*win);
 		return (1);
-	}
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 12:27:27 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/20 14:11:38 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/20 14:36:29 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_lvl_data	*create_level(void)
 	level->player = NULL;
 	level->map = open_map("map/map_01.ber");
 	if (!level->map)
-		return (destroy_map(level), NULL);
+		return (free(level), NULL);
 	return (level);
 }
 
