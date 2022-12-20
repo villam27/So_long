@@ -6,7 +6,7 @@
 /*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:53:59 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/19 16:21:45 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/20 11:35:35 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ typedef struct s_lvl_data
 	t_map		*map;
 	int			objects;
 	t_player	*player;
-	t_ilx_rect	*rects;
-	t_ilx_rect	**boxs;
 }	t_lvl_data;
 
 typedef struct s_game_data

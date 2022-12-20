@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   level.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 12:27:27 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/19 22:25:04 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/20 14:11:38 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,9 @@ t_lvl_data	*create_level(void)
 	level->map = NULL;
 	level->objects = 0;
 	level->player = NULL;
-	level->rects = NULL;
-	level->boxs = malloc(sizeof(t_ilx_rect) * (50 + 1));
-	i = 0;
-	while (i < 50)
-	{
-		level->boxs[i] = ilx_create_rect(64 * i, 64 * i, 64, 64);
-		i++;
-	}
-	level->boxs[i] = NULL;
 	level->map = open_map("map/map_01.ber");
+	if (!level->map)
+		return (destroy_map(level), NULL);
 	return (level);
 }
 
@@ -53,9 +46,9 @@ void	render_level(t_game_data *game)
 		{
 			if (game->levels->map->map[j][i] == 1 + '0')
 			{
-				game->levels->boxs[k]->x = 64 * i;
-				game->levels->boxs[k]->y = 64 * j;
-				ilx_draw_rect(game->ren, *game->levels->boxs[k], 0xff0000);
+				game->levels->map->boxs[k]->x = 64 * i;
+				game->levels->map->boxs[k]->y = 64 * j;
+				ilx_draw_rect(game->ren, *game->levels->map->boxs[k], 0xf11111 + (i + j) * 100);
 				k++;
 			}
 			j++;
@@ -69,14 +62,7 @@ void	render_level(t_game_data *game)
 */
 void	free_level(t_lvl_data *level)
 {
-	int	i;
-
-	i = 0;
-	while (level->boxs[i])
-	{
-		free(level->boxs[i]);
-		i++;
-	}
-	free(level->boxs);
+	destroy_map(level->map);
+	//destroy_player(level->player);
 	free(level);
 }

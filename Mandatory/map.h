@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 20:45:11 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/19 23:13:14 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/20 11:30:01 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_map_data
 typedef struct s_map
 {
 	t_map_data	*data;
+	t_ilx_rect	**boxs;
 	char		**map;
 }	t_map;
 

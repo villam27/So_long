@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 13:35:58 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/19 21:55:15 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/20 11:38:11 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ void	player_update(t_game_data *data)
 	player_fall(data->player);
 	data->player->player->y = data->player->y;
 	data->player->player->x = data->player->x;
-	while (data->levels->boxs[i])
+	while (data->levels->map->boxs[i])
 	{
-		player_collision(data->player, data->levels->boxs[i]);
+		player_collision(data->player, data->levels->map->boxs[i]);
 		i++;
 	}
 	data->player->player->x = data->player->x;

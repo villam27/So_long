@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 20:45:18 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/19 23:22:42 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/20 14:10:50 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,15 @@ t_map	*open_map(char *path)
 	}
 	map_data = get_map_data(map_fd);
 	close(map_fd);
+	if (!map)
+		return (NULL);
 	map_fd = open(path, O_RDONLY);
 	map = create_map(map_fd, map_data);
+	close(map_fd);
+	if (!map)
+		return (free(map_data), NULL);
 	if (!check_map(map))
-		return (map);
+		return (destroy_map(map), NULL);
 	return (map);
 }
 
@@ -60,6 +65,8 @@ t_map_data	*get_map_data(int fd)
 	if (!map)
 		return (NULL);
 	map_line = get_next_line(fd);
+	if (!map_line)
+		return (free(map), NULL);
 	map->cols = ft_strlen(map_line) - 1;
 	map->rows = 0;
 	map->objects = 0;
@@ -84,12 +91,24 @@ t_map	*create_map(int fd, t_map_data *data)
 	if (!data || !map)
 		return (NULL);
 	map->map = malloc(sizeof(char *) * (data->rows + 1));
+	if (!map->map)
+		return (NULL);
 	while (i < data->rows)
 	{
 		map->map[i] = get_next_line(fd);
 		i++;
 	}
 	map->map[i] = NULL;
+	map->boxs = malloc(sizeof(t_ilx_rect *) * (data->walls + 1));
+	if (!map->boxs)
+		return (free_all(map->map), free(map), NULL);
+	i = 0;
+	while (i < data->walls)
+	{
+		map->boxs[i] = ilx_create_rect(-64, -64, 64, 64);
+		i++;
+	}
+	map->boxs[i] = NULL;
 	map->data = data;
 	return (map);
 }
@@ -103,6 +122,12 @@ void	destroy_map(t_map *map)
 	int	i;
 
 	i = 0;
+	while (map->boxs[i])
+	{
+		ilx_free_rect(map->boxs[i]);
+		i++;
+	}
+	free(map->boxs);
 	free_all(map->map);
 	free(map->data);
 	free(map);

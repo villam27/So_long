@@ -6,7 +6,7 @@
 /*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 18:45:32 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/19 16:56:28 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/20 11:02:31 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	player_collision(t_player *player, t_ilx_rect *box)
 
 void	player_fall(t_player *player)
 {
-	if (player->gravity < 10)
+	if (player->gravity < 17)
 		player->gravity += 1;
 	player->y += player->gravity;
 }
