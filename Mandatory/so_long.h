@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:53:59 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/20 11:35:35 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/21 00:11:44 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,11 @@ void		update(t_game_data *game);
 void		render(t_game_data *game);
 int			win_close(t_game_data *game);
 
-t_game_data	*ini_game(t_ilx_window *w, t_ilx_renderer *r, t_game_input *i);
+t_game_data	*ini_game(t_ilx_window *w, t_ilx_renderer *r, t_game_input *i,
+		char *path);
 void		close_game(t_game_data *game);
-void		addlevel_game(t_game_data **game, t_lvl_data *level);
 
-t_lvl_data	*create_level(void);
+t_lvl_data	*create_level(char *path);
 void		update_level(t_game_data *game);
 void		render_level(t_game_data *game);
 void		free_level(t_lvl_data *level);

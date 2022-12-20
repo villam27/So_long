@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 12:27:27 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/20 23:47:51 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/21 00:22:20 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "player.h"
 #include "map.h"
 
-t_lvl_data	*create_level(void)
+t_lvl_data	*create_level(char *path)
 {
 	t_lvl_data	*level;
 
@@ -24,7 +24,7 @@ t_lvl_data	*create_level(void)
 	level->map = NULL;
 	level->objects = 0;
 	level->player = NULL;
-	level->map = open_map("map/map_01.ber");
+	level->map = open_map(path);
 	if (!level->map)
 		return (free(level), NULL);
 	return (level);

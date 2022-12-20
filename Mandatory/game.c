@@ -6,14 +6,15 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 11:49:37 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/20 23:47:18 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/21 00:11:38 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include "player.h"
 
-t_game_data	*ini_game(t_ilx_window *win, t_ilx_renderer *ren, t_game_input *in)
+t_game_data	*ini_game(t_ilx_window *win, t_ilx_renderer *ren, t_game_input *in,
+	char *path)
 {
 	t_game_data	*game;
 
@@ -24,17 +25,10 @@ t_game_data	*ini_game(t_ilx_window *win, t_ilx_renderer *ren, t_game_input *in)
 	game->ren = ren;
 	game->inputs = in;
 	game->player = create_player();
-	game->levels = create_level();
+	game->levels = create_level(path);
 	if (!game->levels)
 		return (close_game(game), NULL);
 	return (game);
-}
-
-void	addlevel_game(t_game_data **game, t_lvl_data *level)
-{
-	if ((*game)->levels)
-		free_level((*game)->levels);
-	(*game)->levels = create_level();
 }
 
 void	close_game(t_game_data *game)

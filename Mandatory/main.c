@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:55:09 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/21 00:04:33 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/21 00:12:58 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,11 @@ static int	next_frame(t_game_data *data)
 	return (0);
 }
 
-static int	init_all(t_game_data **game, t_game_input *in)
+static int	init_all(t_game_data **game, t_game_input *in, char *path)
 {
 	t_ilx_window	*win;
 	t_ilx_renderer	*ren;
+
 	win = ilx_create_window(800, 600, "so_long");
 	if (!(win))
 		return (1);
@@ -37,7 +38,7 @@ static int	init_all(t_game_data **game, t_game_input *in)
 		ilx_destroy_window(win);
 		return (1);
 	}
-	*game = ini_game(win, ren, in);
+	*game = ini_game(win, ren, in, path);
 	if (!(*game))
 		return (1);
 	return (0);
@@ -48,7 +49,7 @@ int	main(int argc, char **argv)
 	t_game_input	inputs = {0, 0, 0, 0, 0};
 	t_game_data		*game;
 
-	if (!init_all(&game, &inputs))
+	if (argc == 2 && !init_all(&game, &inputs, argv[1]))
 	{
 		mlx_hook(game->win->mlx_win, 17, 0, win_close, game);
 		mlx_hook(game->win->mlx_win, 2, 1L << 0, input_key_down, &inputs);
