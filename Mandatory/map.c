@@ -6,7 +6,7 @@
 /*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 20:45:18 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/20 14:31:21 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/20 16:45:43 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ t_map	*open_map(char *path)
 	}
 	map_data = get_map_data(map_fd);
 	close(map_fd);
-	if (!map)
-		return (NULL);
 	map_fd = open(path, O_RDONLY);
 	map = create_map(map_fd, map_data);
 	close(map_fd);
@@ -133,8 +131,7 @@ void	destroy_map(t_map *map)
 				i++;
 			}
 		}
-		if (map->boxs)
-			free(map->boxs);
+		free(map->boxs);
 		if (map->map)
 			free_all(map->map);
 		if (map->data)
