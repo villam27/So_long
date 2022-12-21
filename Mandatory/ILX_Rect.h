@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 00:43:25 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/18 18:33:43 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/21 20:34:05 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ typedef struct s_ilx_Rect
 }	t_ilx_rect;
 
 t_ilx_rect	*ilx_create_rect(int x, int y, int w, int h);
+t_ilx_rect	**ilx_create_rects(int w, int h, int num);
 void		ilx_free_rect(t_ilx_rect *rect);
+void		ilx_free_rects(t_ilx_rect **rects);
 
 int			ilx_intersection_rect(t_ilx_rect *r1, t_ilx_rect *r2);
 int			ilx_vertical_align_rect(t_ilx_rect *r1, t_ilx_rect *r2);
