@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 01:25:18 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/20 23:38:31 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/21 13:47:43 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ t_ilx_window	*ilx_create_window(int size_x, int size_y, char *title)
 	if (!window)
 		return (NULL);
 	window->mlx = mlx_init();
+	if (!window->mlx)
+		return (free(window), NULL);
 	window->mlx_win = mlx_new_window(window->mlx, size_x, size_y, title);
+	if (!window->mlx_win)
+		return (free(window->mlx), free(window), NULL);
 	window->size_x = size_x;
 	window->size_y = size_y;
 	return (window);
@@ -41,8 +45,12 @@ t_ilx_renderer	*ilx_create_renderer(t_ilx_window *window)
 	if (!renderer)
 		return (NULL);
 	renderer->img = mlx_new_image(window->mlx, window->size_x, window->size_y);
+	if (!renderer->img)
+		return (free(renderer), NULL);
 	renderer->addr = mlx_get_data_addr(renderer->img, &renderer->bits_per_px,
 			&renderer->line_len, &renderer->endian);
+	if (!renderer->addr)
+		return ((void)mlx_destroy_image(window->mlx, renderer->img), NULL);
 	return (renderer);
 }
 

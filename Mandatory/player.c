@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 13:35:58 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/20 11:38:11 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/21 13:55:31 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,14 @@ t_player	*create_player(void)
 	player = malloc(sizeof(t_player));
 	if (!player)
 		return (NULL);
-	player->player = ilx_create_rect(300, 100, 50, 50);
+	player->box = ilx_create_rect(300, 100, 50, 50);
+	if (!player->box)
+		return (free(player), NULL);
+	player->lastp = ilx_create_rect(300, 100, 50, 50);
+	if (!player->lastp)
+		return (ilx_free_rect(player->box), free(player), NULL);
 	player->x = 300;
 	player->y = 100;
-	player->lastp = ilx_create_rect(300, 100, 50, 50);
 	player->fall = 1;
 	player->gravity = 3;
 	player->speed = 6;
@@ -32,7 +36,7 @@ t_player	*create_player(void)
 
 void	destroy_player(t_player *player)
 {
-	ilx_free_rect(player->player);
+	ilx_free_rect(player->box);
 	ilx_free_rect(player->lastp);
 	free(player);
 }
@@ -59,18 +63,18 @@ void	player_update(t_game_data *data)
 
 	i = 0;
 	player_fall(data->player);
-	data->player->player->y = data->player->y;
-	data->player->player->x = data->player->x;
+	data->player->box->y = data->player->y;
+	data->player->box->x = data->player->x;
 	while (data->levels->map->boxs[i])
 	{
 		player_collision(data->player, data->levels->map->boxs[i]);
 		i++;
 	}
-	data->player->player->x = data->player->x;
-	data->player->player->y = data->player->y;
+	data->player->box->x = data->player->x;
+	data->player->box->y = data->player->y;
 }
 
 void	player_render(t_game_data *data)
 {
-	ilx_draw_rect(data->ren, *data->player->player, 0xff7777);
+	ilx_draw_rect(data->ren, *data->player->box, 0xff7777);
 }

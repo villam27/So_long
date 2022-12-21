@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:53:59 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/21 00:11:44 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/21 13:53:00 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ typedef struct s_game_input
 
 typedef struct s_player
 {
-	t_ilx_rect	*player;
+	t_ilx_rect	*box;
+	t_ilx_rect	*lastp;
 	int			x;
 	int			y;
-	t_ilx_rect	*lastp;
 	int			fall;
 	int			gravity;
 	int			speed;
