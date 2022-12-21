@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 12:27:27 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/21 18:09:15 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/21 18:41:20 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,44 @@ t_lvl_data	*create_level(char *path)
 		return (NULL);
 	level->map = NULL;
 	level->objects = 0;
+	level->update = 1;
 	level->map = open_map(path);
 	if (!level->map)
 		return (free(level), NULL);
 	return (level);
 }
 
-void	render_level(t_game_data *game)
+void	level_update(t_game_data *game)
+{
+	int	i;
+	int	j;
+	int	k;
+
+	if (game->levels->update)
+	{
+		i = 0;
+		k = 0;
+		while (i < game->levels->map->data->cols)
+		{
+			j = 0;
+			while (j < game->levels->map->data->rows)
+			{
+				if (game->levels->map->map[j][i] == '1')
+				{
+					game->levels->map->boxs[k]->x = 64 * i;
+					game->levels->map->boxs[k]->y = 64 * j;
+					k++;
+				}
+				j++;
+			}
+			i++;
+		}
+		game->levels->update = 0;
+		ft_printf("updated\n");
+	}
+}
+
+void	level_render(t_game_data *game)
 {
 	int	i;
 	int	j;
@@ -42,17 +73,15 @@ void	render_level(t_game_data *game)
 		j = 0;
 		while (j < game->levels->map->data->rows)
 		{
-			if (game->levels->map->map[j][i] == 1 + '0')
+			if (game->levels->map->map[j][i] == '1')
 			{
-				game->levels->map->boxs[k]->x = 64 * i;
-				game->levels->map->boxs[k]->y = 64 * j;
 				ilx_draw_rect(game->ren, *game->levels->map->boxs[k], 0xf11111 + (i + j) * 100);
 				k++;
 			}
 			j++;
 		}
 		i++;
-	}	
+	}
 }
 
 void	free_level(t_lvl_data *level)

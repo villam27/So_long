@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:53:59 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/21 18:09:38 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/21 18:29:47 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_lvl_data
 {
 	t_map		*map;
 	int			objects;
+	int			update;
 }	t_lvl_data;
 
 typedef struct s_game_data
@@ -67,7 +68,7 @@ t_game_data	*ini_game(t_ilx_window *w, t_ilx_renderer *r, t_game_input *i,
 void		close_game(t_game_data *game);
 
 t_lvl_data	*create_level(char *path);
-void		update_level(t_game_data *game);
-void		render_level(t_game_data *game);
+void		level_update(t_game_data *game);
+void		level_render(t_game_data *game);
 void		free_level(t_lvl_data *level);
 #endif

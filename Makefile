@@ -6,7 +6,7 @@
 #    By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 23:55:26 by alboudje          #+#    #+#              #
-#    Updated: 2022/12/21 17:42:33 by alboudje         ###   ########.fr        #
+#    Updated: 2022/12/21 20:06:50 by alboudje         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,14 @@ SRC_FILES		= 	main.c \
 					
 SRC 			= 	$(addprefix $(SRC_FOLDER), $(SRC_FILES))
 
-INCLUDES_FILES 	= 	so_long.h
+INCLUDES_FILES 	= 	ILX.h \
+					ILX_Keycodes.h \
+					ILX_Rect.h \
+					ILX_Window.h \
+					map.h \
+					player.h \
+					so_long.h
+
 INCLUDES 		= 	$(addprefix $(SRC_FOLDER), $(INCLUDES_FILES))
 
 OBJ 			= 	${SRC:.c=.o}

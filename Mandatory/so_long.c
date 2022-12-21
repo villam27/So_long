@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 01:10:24 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/18 18:43:41 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/21 18:30:09 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	input(t_game_data *game)
 
 void	update(t_game_data *game)
 {
+	level_update(game);
 	player_update(game);
 }
 
@@ -27,7 +28,7 @@ void	render(t_game_data *game)
 {	
 	ilx_clear_renderer(game->ren);
 	ilx_draw_px(game->ren, 10, 10, 0xff0000);
-	render_level(game);
+	level_render(game);
 	player_render(game);
 	mlx_put_image_to_window(game->win->mlx, game->win->mlx_win,
 		game->ren->img, 0, 0);
