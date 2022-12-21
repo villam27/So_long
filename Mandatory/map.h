@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 20:45:11 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/21 17:00:26 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/21 17:28:23 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void		get_row_data(char *row, t_map_data **data);
 void		destroy_map(t_map *map);
 int			check_rect(t_map *map);
 int			check_walls(t_map *map);
-int			check_path(t_map *map, char ***temp_map, int x,  int y);
+int			check_path(int *objs, char ***temp_map, int x,  int y);
 int			check_map(t_map *map);
 char		**map_dup(t_map *map);
 
