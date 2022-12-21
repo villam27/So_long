@@ -6,27 +6,27 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 13:35:58 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/21 13:55:31 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/21 18:07:22 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "player.h"
 
-t_player	*create_player(void)
+t_player	*create_player(int x, int y)
 {
 	t_player	*player;
 
 	player = malloc(sizeof(t_player));
 	if (!player)
 		return (NULL);
-	player->box = ilx_create_rect(300, 100, 50, 50);
+	player->x = x * 64;
+	player->y = y * 64;
+	player->box = ilx_create_rect(player->x, player->y, 50, 50);
 	if (!player->box)
 		return (free(player), NULL);
-	player->lastp = ilx_create_rect(300, 100, 50, 50);
+	player->lastp = ilx_create_rect(player->x, player->y, 50, 50);
 	if (!player->lastp)
 		return (ilx_free_rect(player->box), free(player), NULL);
-	player->x = 300;
-	player->y = 100;
 	player->fall = 1;
 	player->gravity = 3;
 	player->speed = 6;

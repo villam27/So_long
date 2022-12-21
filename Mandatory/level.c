@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 12:27:27 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/21 14:06:03 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/21 18:09:15 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ t_lvl_data	*create_level(char *path)
 		return (NULL);
 	level->map = NULL;
 	level->objects = 0;
-	level->player = NULL;
 	level->map = open_map(path);
 	if (!level->map)
 		return (free(level), NULL);
@@ -56,12 +55,8 @@ void	render_level(t_game_data *game)
 	}	
 }
 
-/*
-*	!!! DONT FORGET TO FREE THE MAP AND THE PLAYER !!!
-*/
 void	free_level(t_lvl_data *level)
 {
 	destroy_map(level->map);
-	//destroy_player(level->player);
 	free(level);
 }
