@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_physics.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 18:45:32 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/20 11:02:31 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/21 02:25:33 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,18 @@ void	player_collision(t_player *player, t_ilx_rect *box)
 				player->fall = 0;
 			}
 			else
+			{
 				player->y += box->y + box->h - player->y;
+				player->gravity = 0;
+			}
 		}
 	}
 }
 
 void	player_fall(t_player *player)
 {
+	if (player->gravity > 2)
+		player->fall = 1;
 	if (player->gravity < 17)
 		player->gravity += 1;
 	player->y += player->gravity;
