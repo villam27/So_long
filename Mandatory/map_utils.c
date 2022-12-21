@@ -1,0 +1,74 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_utils.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/21 14:30:43 by alboudje          #+#    #+#             */
+/*   Updated: 2022/12/21 14:41:01 by alboudje         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "map.h"
+
+void	get_row_data(char *row, int *walls, int *objects)
+{
+	int	i;
+
+	if (!row)
+		return ;
+	i = 0;
+	while (row[i])
+	{
+		if (row[i] == '1')
+			(*walls)++;
+		else if (row[i] == 'C')
+			(*objects)++;
+		i++;
+	}
+}
+
+int	check_rect(t_map *map)
+{
+	int	i;
+
+	i = 0;
+	while (i < map->data->rows)
+	{
+		if (i == map->data->rows - 1 &&
+			ft_strlen(map->map[i]) != map->data->cols)
+			return (1);
+		if (i < map->data->rows - 1 &&
+			ft_strlen(map->map[i]) - 1 != map->data->cols)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	check_walls(t_map *map)
+{
+	int	i;
+
+	i = 0;
+	while (i < map->data->cols)
+	{
+		if (map->map[0][i] != '1' || map->map[map->data->rows - 1][i] != '1')
+			return (1);
+		i++;
+	}
+	i = 0;
+	while (i < map->data->rows)
+	{
+		if (map->map[i][0] != '1' || map->map[i][map->data->cols - 1] != '1')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	check_path(t_map *map)
+{
+	return (0);
+}

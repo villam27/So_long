@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 20:45:18 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/21 01:43:49 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/21 14:46:39 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,7 @@ t_map	*open_map(char *path)
 	map == NULL;
 	map_fd = open(path, O_RDONLY);
 	if (map_fd == -1)
-	{
-		perror(path);
-		return (NULL);
-	}
+		return (perror(path), NULL);
 	map_data = get_map_data(map_fd);
 	close(map_fd);
 	map_fd = open(path, O_RDONLY);
@@ -36,23 +33,6 @@ t_map	*open_map(char *path)
 	if (check_map(map))
 		return (destroy_map(map), NULL);
 	return (map);
-}
-
-void	get_row_data(char *row, int *walls, int *objects)
-{
-	int	i;
-
-	if (!row)
-		return ;
-	i = 0;
-	while (row[i])
-	{
-		if (row[i] == '1')
-			(*walls)++;
-		else if (row[i] == 'C')
-			(*objects)++;
-		i++;
-	}
 }
 
 t_map_data	*get_map_data(int fd)
@@ -114,33 +94,12 @@ t_map	*create_map(int fd, t_map_data *data)
 
 int	check_map(t_map *map)
 {
-	int	i;
-
-	i = 0;
-	while (i < map->data->rows)
-	{
-		if (i == map->data->rows - 1 &&
-			ft_strlen(map->map[i]) != map->data->cols)
-			return (1);
-		if (i < map->data->rows - 1 &&
-			ft_strlen(map->map[i]) - 1 != map->data->cols)
-			return (1);
-		i++;
-	}
-	i = 0;
-	while (i < map->data->cols)
-	{
-		if (map->map[0][i] != '1' || map->map[map->data->rows - 1][i] != '1')
-			return (1);
-		i++;
-	}
-	i = 0;
-	while (i < map->data->rows)
-	{
-		if (map->map[i][0] != '1' || map->map[i][map->data->cols - 1] != '1')
-			return (1);
-		i++;
-	}
+	if (check_rect(map))
+		return (1);
+	if (check_walls(map))
+		return (2);
+	if (check_path(map))
+		return (3);
 	return (0);
 }
 

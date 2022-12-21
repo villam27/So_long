@@ -6,7 +6,7 @@
 #    By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 23:55:26 by alboudje          #+#    #+#              #
-#    Updated: 2022/12/21 00:12:38 by alboudje         ###   ########.fr        #
+#    Updated: 2022/12/21 14:32:04 by alboudje         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRC_FILES		= 	main.c \
 					level.c \
 					inputs.c \
 					map.c \
+					map_utils.c \
 					ILX.c \
 					ILX_Rect.c \
 					ILX_Rect_utils.c \
