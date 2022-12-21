@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 13:35:58 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/21 18:07:22 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/22 00:13:55 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,25 @@ void	player_input(t_game_data *data)
 	}
 }
 
+void	player_get_obj(t_game_data *data, t_player *player, t_ilx_rect *obj)
+{
+	int	x;
+	int	y;
+
+	if (ilx_intersection_rect(player->box, obj))
+	{
+		x = (obj->x - 16) / 64;
+		y = (obj->y - 16) / 64;
+		if (data->levels->map->map[y][x] == 'C')
+		{
+			data->levels->map->map[y][x] = '0';
+			data->levels->objects--;
+			data->levels->update = 1;
+			ft_printf("%d\n x=%d, y=%d\n", data->levels->objects, x, y);
+		}
+	}
+}
+
 void	player_update(t_game_data *data)
 {
 	int	i;
@@ -68,6 +87,12 @@ void	player_update(t_game_data *data)
 	while (data->levels->map->boxs[i])
 	{
 		player_collision(data->player, data->levels->map->boxs[i]);
+		i++;
+	}
+	i = 0;
+	while (data->levels->map->objects[i])
+	{
+		player_get_obj(data, data->player, data->levels->map->objects[i]);
 		i++;
 	}
 	data->player->box->x = data->player->x;
