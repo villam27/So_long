@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 20:45:18 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/21 15:16:21 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/21 16:25:43 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_map	*open_map(char *path)
 	close(map_fd);
 	if (!map)
 		return (free(map_data), NULL);
+	ft_printf("players: >%d<\n", map_data->player);
 	if (check_map(map))
 		return (destroy_map(map), NULL);
 	return (map);
@@ -50,9 +51,10 @@ t_map_data	*get_map_data(int fd)
 	map->rows = 0;
 	map->objects = 0;
 	map->walls = 0;
+	map->player = 0;
 	while (map_line)
 	{
-		get_row_data(map_line, &map->walls, &map->objects);
+		get_row_data(map_line, &map);
 		free(map_line);
 		map_line = get_next_line(fd);
 		map->rows++;
@@ -96,16 +98,18 @@ int	check_map(t_map *map)
 {
 	char **temp_map;
 
+	if (map->data->player != 1)
+		return (1);
+	if (check_rect(map))
+		return (2);
+	if (check_walls(map))
+		return (3);
 	temp_map = map_dup(map);
 	if (!temp_map)
 		return (-1);
-	if (check_rect(map))
-		return (1);
-	if (check_walls(map))
-		return (2);
 	if (check_path(map, temp_map))
-		return (3);
-	ft_printf("%d\n", map->data->objects);
+		return (4);
+	ft_printf("objects: %d\n", map->data->objects);
 	ft_printf("free temp_map at address: %p\n", temp_map);
 	free_all(temp_map);
 	ft_printf("temp_map freed at address: %p\n", temp_map);

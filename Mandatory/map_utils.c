@@ -6,13 +6,13 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 14:30:43 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/21 15:23:31 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/21 16:26:41 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
 
-void	get_row_data(char *row, int *walls, int *objects)
+void	get_row_data(char *row, t_map_data **data)
 {
 	int	i;
 
@@ -22,9 +22,16 @@ void	get_row_data(char *row, int *walls, int *objects)
 	while (row[i])
 	{
 		if (row[i] == '1')
-			(*walls)++;
+			(*data)->walls++;
 		else if (row[i] == 'C')
-			(*objects)++;
+			(*data)->objects++;
+		else if (row[i] == 'P')
+		{
+			(*data)->player++;
+			(*data)->player_pos.x = i;
+			(*data)->player_pos.y = (*data)->rows;
+			ft_printf("player found at %d, %d\n", (*data)->player_pos.x, (*data)->player_pos.y);
+		}
 		i++;
 	}
 }
