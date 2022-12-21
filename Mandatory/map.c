@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 20:45:18 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/21 20:35:41 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/21 20:53:50 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,16 +80,12 @@ t_map	*create_map(int fd, t_map_data *data)
 		i++;
 	}
 	map->map[i] = NULL;
-	map->boxs = malloc(sizeof(t_ilx_rect *) * (data->walls + 1));
+	map->boxs = ilx_create_rects(64, 64, data->walls);
 	if (!map->boxs)
 		return (free_all(map->map), free(map), NULL);
-	i = 0;
-	while (i < data->walls)
-	{
-		map->boxs[i] = ilx_create_rect(-64, -64, 64, 64);
-		i++;
-	}
-	map->boxs[i] = NULL;
+	map->objects = ilx_create_rects(32, 32, data->objects);
+	if (!map->objects)
+		return (ilx_free_rects(map->boxs), free_all(map->map), free(map), NULL);
 	map->data = data;
 	return (map);
 }
@@ -123,15 +119,8 @@ void	destroy_map(t_map *map)
 	i = 0;
 	if (map)
 	{
-		while (map->boxs[i])
-		{
-			if (map->boxs[i])
-			{
-				ilx_free_rect(map->boxs[i]);
-				i++;
-			}
-		}
-		free(map->boxs);
+		ilx_free_rects(map->boxs);
+		ilx_free_rects(map->objects);
 		if (map->map)
 			free_all(map->map);
 		if (map->data)
