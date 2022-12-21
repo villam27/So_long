@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 20:45:18 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/20 23:47:10 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/21 01:43:49 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_map	*open_map(char *path)
 	close(map_fd);
 	if (!map)
 		return (free(map_data), NULL);
-	if (!check_map(map))
+	if (check_map(map))
 		return (destroy_map(map), NULL);
 	return (map);
 }
@@ -114,7 +114,34 @@ t_map	*create_map(int fd, t_map_data *data)
 
 int	check_map(t_map *map)
 {
-	return (1);
+	int	i;
+
+	i = 0;
+	while (i < map->data->rows)
+	{
+		if (i == map->data->rows - 1 &&
+			ft_strlen(map->map[i]) != map->data->cols)
+			return (1);
+		if (i < map->data->rows - 1 &&
+			ft_strlen(map->map[i]) - 1 != map->data->cols)
+			return (1);
+		i++;
+	}
+	i = 0;
+	while (i < map->data->cols)
+	{
+		if (map->map[0][i] != '1' || map->map[map->data->rows - 1][i] != '1')
+			return (1);
+		i++;
+	}
+	i = 0;
+	while (i < map->data->rows)
+	{
+		if (map->map[i][0] != '1' || map->map[i][map->data->cols - 1] != '1')
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
 void	destroy_map(t_map *map)
