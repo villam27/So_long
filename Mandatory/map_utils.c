@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 14:30:43 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/21 14:41:01 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/21 15:23:31 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,25 @@ int	check_walls(t_map *map)
 	return (0);
 }
 
-int	check_path(t_map *map)
+int	check_path(t_map *map, char **temp_map)
 {
 	return (0);
+}
+
+char	**map_dup(t_map *map)
+{
+	char	**temp_map;
+	int		i;
+
+	i = 0;
+	temp_map = malloc(sizeof(char *) * (map->data->rows + 1));
+	if (!temp_map)
+		return (NULL);
+	while (i < map->data->rows)
+	{
+		temp_map[i] = ft_strdup(map->map[i]);
+		i++;
+	}
+	temp_map[i] = NULL;
+	return (temp_map);
 }
