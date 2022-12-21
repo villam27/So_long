@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 14:30:43 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/21 16:26:41 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/21 17:12:10 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,20 @@ int	check_walls(t_map *map)
 	return (0);
 }
 
-int	check_path(t_map *map, char **temp_map)
+int	check_path(t_map *map, char ***temp_map, int x, int y)
 {
-	return (0);
+	ft_printf("x, y: %d, %d\n", x, y);
+	if ((*temp_map)[y][x] == 'C')
+		return (0);
+	if ((*temp_map)[y][x] == '1')
+		return (1);
+	(*temp_map)[y][x] = '1';
+	if (!check_path(map, temp_map, x + 1, y) ||
+		!check_path(map, temp_map, x - 1, y) ||
+		!check_path(map, temp_map, x, y + 1) ||
+		!check_path(map, temp_map, x, y - 1))
+		return (0);
+	return (1);
 }
 
 char	**map_dup(t_map *map)

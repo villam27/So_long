@@ -6,7 +6,7 @@
 #    By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 23:55:26 by alboudje          #+#    #+#              #
-#    Updated: 2022/12/21 14:32:04 by alboudje         ###   ########.fr        #
+#    Updated: 2022/12/21 17:04:10 by alboudje         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ INCLUDES_FILES 	= 	so_long.h
 INCLUDES 		= 	$(addprefix $(SRC_FOLDER), $(INCLUDES_FILES))
 
 OBJ 			= 	${SRC:.c=.o}
-CFLAGS 			= 	-Wall -Wextra #-g3 -fsanitize=address
+CFLAGS 			= 	-Wall -Wextra -g3 -fsanitize=address
 UNAME_S			:=	$(shell uname -s)
 
 ifeq ($(UNAME_S), Linux)

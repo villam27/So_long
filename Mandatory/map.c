@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 20:45:18 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/21 16:25:43 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/21 17:13:00 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,8 @@ int	check_map(t_map *map)
 	temp_map = map_dup(map);
 	if (!temp_map)
 		return (-1);
-	if (check_path(map, temp_map))
-		return (4);
+	if (check_path(map, &temp_map, map->data->player_pos.x, map->data->player_pos.y))
+		return (free_all(temp_map), 4);
 	ft_printf("objects: %d\n", map->data->objects);
 	ft_printf("free temp_map at address: %p\n", temp_map);
 	free_all(temp_map);
