@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 14:30:43 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/21 17:42:21 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/22 20:20:57 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void	get_row_data(char *row, t_map_data **data)
 {
 	int	i;
 
-	if (!row)
-		return ;
 	i = 0;
 	while (row[i])
 	{
@@ -31,6 +29,13 @@ void	get_row_data(char *row, t_map_data **data)
 			(*data)->player_pos.x = i;
 			(*data)->player_pos.y = (*data)->rows;
 			ft_printf("player found at %d, %d\n", (*data)->player_pos.x, (*data)->player_pos.y);
+		}
+		else if (row[i] == 'E')
+		{
+			(*data)->exit++;
+			(*data)->exit_pos.x = i;
+			(*data)->exit_pos.y = (*data)->rows;
+			ft_printf("exit found at %d, %d\n", (*data)->exit_pos.x, (*data)->exit_pos.y);
 		}
 		i++;
 	}
@@ -77,7 +82,7 @@ int	check_walls(t_map *map)
 
 int	check_path(int *objs, char ***temp_map, int x, int y)
 {
-	if ((*temp_map)[y][x] == 'C')
+	if ((*temp_map)[y][x] == 'C' || (*temp_map)[y][x] == 'E')
 	{
 		(*temp_map)[y][x] = '0';
 		(*objs)++;

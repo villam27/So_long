@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:53:59 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/21 18:29:47 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/22 19:57:03 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ typedef struct s_player
 typedef struct s_lvl_data
 {
 	t_map		*map;
-	int			objects;
 	int			update;
 }	t_lvl_data;
 

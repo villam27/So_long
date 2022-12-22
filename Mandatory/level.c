@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 12:27:27 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/22 00:10:38 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/22 19:57:27 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ t_lvl_data	*create_level(char *path)
 	if (!level)
 		return (NULL);
 	level->map = NULL;
-	level->objects = 0;
 	level->update = 1;
 	level->map = open_map(path);
 	if (!level->map)

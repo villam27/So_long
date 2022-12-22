@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 13:35:58 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/22 00:13:55 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/22 19:56:52 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,8 @@ void	player_get_obj(t_game_data *data, t_player *player, t_ilx_rect *obj)
 		if (data->levels->map->map[y][x] == 'C')
 		{
 			data->levels->map->map[y][x] = '0';
-			data->levels->objects--;
+			data->levels->map->data->objects--;
 			data->levels->update = 1;
-			ft_printf("%d\n x=%d, y=%d\n", data->levels->objects, x, y);
 		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 20:45:11 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/21 20:07:52 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/22 20:15:15 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,15 @@ typedef struct s_map_data
 	int			walls;
 	int			objects;
 	int			player;
+	int			exit;
 	t_ilx_point	player_pos;
+	t_ilx_point exit_pos;
 }	t_map_data;
 
 typedef struct s_map
 {
 	t_map_data	*data;
+	t_ilx_rect	*exit;
 	t_ilx_rect	**boxs;
 	t_ilx_rect	**objects;
 	char		**map;
