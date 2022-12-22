@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 20:45:18 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/22 21:44:58 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/22 22:58:51 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ t_map	*open_map(char *path)
 	close(map_fd);
 	if (!map)
 		return (free(map_data), NULL);
-	ft_printf("players: >%d<\n", map_data->player);
 	if (check_map(map))
 		return (destroy_map(map), NULL);
 	return (map);
@@ -81,16 +80,8 @@ t_map	*create_map(int fd, t_map_data *data)
 		i++;
 	}
 	map->map[i] = NULL;
-	map->boxs = ilx_create_rects(64, 64, data->walls);
-	if (!map->boxs)
-		return (free_all(map->map), free(map), NULL);
-	map->objects = ilx_create_rects(32, 32, data->objects);
-	if (!map->objects)
-		return (ilx_free_rects(map->boxs), free_all(map->map), free(map), NULL);
-	map->exit = ilx_create_rect(data->exit_pos.x * 64, data->exit_pos.y * 64, 64, 64);
-	if (!map->exit)
-		return (ilx_free_rects(map->objects), ilx_free_rects(map->boxs), free_all(map->map), free(map), NULL);
-	map->data = data;
+	if (create_map_objects(&map, data))
+		return (NULL);
 	return (map);
 }
 
@@ -109,7 +100,8 @@ int	check_map(t_map *map)
 	temp_map = map_dup(map);
 	if (!temp_map)
 		return (-1);
-	check_path(&objects, &temp_map, map->data->player_pos.x, map->data->player_pos.y);
+	check_path(&objects, &temp_map, map->data->player_pos.x,
+		map->data->player_pos.y);
 	if (objects != map->data->objects + 1)
 		return (free_all(temp_map), 4);
 	free_all(temp_map);

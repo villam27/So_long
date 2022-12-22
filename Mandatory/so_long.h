@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:53:59 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/22 19:57:03 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/22 22:34:23 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,14 @@ void		render(t_game_data *game);
 int			win_close(t_game_data *game);
 
 t_game_data	*ini_game(t_ilx_window *w, t_ilx_renderer *r, t_game_input *i,
-		char *path);
+				char *path);
 void		close_game(t_game_data *game);
 
 t_lvl_data	*create_level(char *path);
+void		update_map_box(t_game_data *game, int *b, int i, int j);
+void		render_map_box(t_game_data *game, int *b, int i, int j);
+void		update_map_obj(t_game_data *data, int *o, int i, int j);
+void		render_map_obj(t_game_data *game, int *o, int i, int j);
 void		level_update(t_game_data *game);
 void		level_render(t_game_data *game);
 void		free_level(t_lvl_data *level);

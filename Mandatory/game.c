@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 11:49:37 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/22 15:33:41 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/22 22:13:25 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_game_data	*ini_game(t_ilx_window *win, t_ilx_renderer *ren, t_game_input *in,
 	if (!game->levels)
 		return (close_game(game), NULL);
 	game->player = create_player(game->levels->map->data->player_pos.x,
-		game->levels->map->data->player_pos.y);
+			game->levels->map->data->player_pos.y);
 	if (!game->player)
 		return (close_game(game), NULL);
 	return (game);

@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 13:35:58 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/22 21:49:21 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/22 22:11:22 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,24 +57,6 @@ void	player_input(t_game_data *data)
 	}
 }
 
-void	player_get_obj(t_game_data *data, t_player *player, t_ilx_rect *obj)
-{
-	int	x;
-	int	y;
-
-	if (ilx_intersection_rect(player->box, obj))
-	{
-		x = (obj->x - 16) / 64;
-		y = (obj->y - 16) / 64;
-		if (data->levels->map->map[y][x] == 'C')
-		{
-			data->levels->map->map[y][x] = '0';
-			data->levels->map->data->objects--;
-			data->levels->update = 1;
-		}
-	}
-}
-
 void	player_update(t_game_data *data)
 {
 	int	i;
@@ -94,7 +76,8 @@ void	player_update(t_game_data *data)
 		player_get_obj(data, data->player, data->levels->map->objects[i]);
 		i++;
 	}
-	if (ilx_intersection_rect(data->player->box, data->levels->map->exit) && data->levels->map->data->objects == 0)
+	if (ilx_intersection_rect(data->player->box, data->levels->map->exit)
+		&& data->levels->map->data->objects == 0)
 		data->inputs->exit = 1;
 	data->player->box->x = data->player->x;
 	data->player->box->y = data->player->y;

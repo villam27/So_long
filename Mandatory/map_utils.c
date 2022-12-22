@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 14:30:43 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/22 20:20:57 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/22 22:15:05 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,12 @@ void	get_row_data(char *row, t_map_data **data)
 			(*data)->player++;
 			(*data)->player_pos.x = i;
 			(*data)->player_pos.y = (*data)->rows;
-			ft_printf("player found at %d, %d\n", (*data)->player_pos.x, (*data)->player_pos.y);
 		}
 		else if (row[i] == 'E')
 		{
 			(*data)->exit++;
 			(*data)->exit_pos.x = i;
 			(*data)->exit_pos.y = (*data)->rows;
-			ft_printf("exit found at %d, %d\n", (*data)->exit_pos.x, (*data)->exit_pos.y);
 		}
 		i++;
 	}
@@ -48,11 +46,11 @@ int	check_rect(t_map *map)
 	i = 0;
 	while (i < map->data->rows)
 	{
-		if (i == map->data->rows - 1 &&
-			ft_strlen(map->map[i]) != map->data->cols)
+		if (i == map->data->rows - 1
+			&& ft_strlen(map->map[i]) != map->data->cols)
 			return (1);
-		if (i < map->data->rows - 1 &&
-			ft_strlen(map->map[i]) - 1 != map->data->cols)
+		if (i < map->data->rows - 1
+			&& ft_strlen(map->map[i]) - 1 != map->data->cols)
 			return (1);
 		i++;
 	}
@@ -90,10 +88,10 @@ int	check_path(int *objs, char ***temp_map, int x, int y)
 	if ((*temp_map)[y][x] == '1')
 		return (1);
 	(*temp_map)[y][x] = '1';
-	if (!check_path(objs, temp_map, x + 1, y) ||
-		!check_path(objs, temp_map, x - 1, y) ||
-		!check_path(objs, temp_map, x, y + 1) ||
-		!check_path(objs, temp_map, x, y - 1))
+	if (!check_path(objs, temp_map, x + 1, y)
+		|| !check_path(objs, temp_map, x - 1, y)
+		|| !check_path(objs, temp_map, x, y + 1)
+		|| !check_path(objs, temp_map, x, y - 1))
 		return (0);
 	return (1);
 }

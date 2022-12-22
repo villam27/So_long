@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 12:27:27 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/22 21:46:06 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/22 22:36:16 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,37 +33,26 @@ void	level_update(t_game_data *game)
 {
 	int	i;
 	int	j;
-	int	k;
+	int	b;
 	int	o;
 
 	if (game->levels->update)
 	{
 		i = 0;
-		k = 0;
+		b = 0;
 		o = 0;
 		while (i < game->levels->map->data->cols)
 		{
 			j = 0;
 			while (j < game->levels->map->data->rows)
 			{
-				if (game->levels->map->map[j][i] == '1')
-				{
-					game->levels->map->boxs[k]->x = 64 * i;
-					game->levels->map->boxs[k]->y = 64 * j;
-					k++;
-				}
-				if (game->levels->map->map[j][i] == 'C')
-				{
-					game->levels->map->objects[o]->x = 64 * i + 16;
-					game->levels->map->objects[o]->y = 64 * j + 16;
-					o++;
-				}
+				update_map_box(game, &b, i, j);
+				update_map_obj(game, &o, i, j);
 				j++;
 			}
 			i++;
 		}
 		game->levels->update = 0;
-		ft_printf("updated\n");
 	}
 }
 
@@ -82,16 +71,8 @@ void	level_render(t_game_data *game)
 		j = 0;
 		while (j < game->levels->map->data->rows)
 		{
-			if (game->levels->map->map[j][i] == '1')
-			{
-				ilx_draw_rect(game->ren, *game->levels->map->boxs[b], 0xf11111 + (i + j) * 100);
-				b++;
-			}
-			if (game->levels->map->map[j][i] == 'C')
-			{
-				ilx_draw_rect(game->ren, *game->levels->map->objects[o], 0x99cc44);
-				o++;
-			}
+			render_map_box(game, &b, i, j);
+			render_map_obj(game, &o, i, j);
 			if (game->levels->map->map[j][i] == 'E')
 				ilx_draw_rect(game->ren, *game->levels->map->exit, 0x777777);
 			j++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:55:09 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/22 15:31:40 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/22 23:02:47 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,21 @@ static int	next_frame(t_game_data *data)
 	return (0);
 }
 
+static void	init_input(t_game_input *in)
+{
+	in->down = 0;
+	in->up = 0;
+	in->left = 0;
+	in->right = 0;
+	in->exit = 0;
+}
+
 static int	init_all(t_game_data **game, t_game_input *in, char *path)
 {
 	t_ilx_window	*win;
 	t_ilx_renderer	*ren;
 
+	init_input(in);
 	win = ilx_create_window(800, 600, "so_long");
 	if (!(win))
 		return (1);
@@ -46,7 +56,7 @@ static int	init_all(t_game_data **game, t_game_input *in, char *path)
 
 int	main(int argc, char **argv)
 {
-	t_game_input	inputs = {0, 0, 0, 0, 0};
+	t_game_input	inputs;
 	t_game_data		*game;
 
 	if (argc == 2 && !init_all(&game, &inputs, argv[1]))

@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 18:45:32 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/21 13:56:55 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/22 22:10:22 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,24 @@ void	player_collision(t_player *player, t_ilx_rect *box)
 				player->y += box->y + box->h - player->y;
 				player->gravity = 0;
 			}
+		}
+	}
+}
+
+void	player_get_obj(t_game_data *data, t_player *player, t_ilx_rect *obj)
+{
+	int	x;
+	int	y;
+
+	if (ilx_intersection_rect(player->box, obj))
+	{
+		x = (obj->x - 16) / 64;
+		y = (obj->y - 16) / 64;
+		if (data->levels->map->map[y][x] == 'C')
+		{
+			data->levels->map->map[y][x] = '0';
+			data->levels->map->data->objects--;
+			data->levels->update = 1;
 		}
 	}
 }
