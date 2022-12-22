@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ILX_Window.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 01:25:18 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/21 13:47:43 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/22 15:34:55 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ t_ilx_window	*ilx_create_window(int size_x, int size_y, char *title)
 void	ilx_destroy_window(t_ilx_window *window)
 {
 	mlx_destroy_window(window->mlx, window->mlx_win);
-	free(window->mlx);
 	free(window);
 }
 
