@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 20:45:18 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/22 20:21:17 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/22 21:44:58 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,9 @@ t_map	*create_map(int fd, t_map_data *data)
 	map->objects = ilx_create_rects(32, 32, data->objects);
 	if (!map->objects)
 		return (ilx_free_rects(map->boxs), free_all(map->map), free(map), NULL);
+	map->exit = ilx_create_rect(data->exit_pos.x * 64, data->exit_pos.y * 64, 64, 64);
+	if (!map->exit)
+		return (ilx_free_rects(map->objects), ilx_free_rects(map->boxs), free_all(map->map), free(map), NULL);
 	map->data = data;
 	return (map);
 }
@@ -122,6 +125,7 @@ void	destroy_map(t_map *map)
 	{
 		ilx_free_rects(map->boxs);
 		ilx_free_rects(map->objects);
+		ilx_free_rect(map->exit);
 		if (map->map)
 			free_all(map->map);
 		if (map->data)

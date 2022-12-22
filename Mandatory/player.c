@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 13:35:58 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/22 19:56:52 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/22 21:49:21 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ void	player_update(t_game_data *data)
 		player_get_obj(data, data->player, data->levels->map->objects[i]);
 		i++;
 	}
+	if (ilx_intersection_rect(data->player->box, data->levels->map->exit) && data->levels->map->data->objects == 0)
+		data->inputs->exit = 1;
 	data->player->box->x = data->player->x;
 	data->player->box->y = data->player->y;
 }

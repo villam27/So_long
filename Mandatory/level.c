@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 12:27:27 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/22 19:57:27 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/22 21:46:06 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ void	level_render(t_game_data *game)
 				ilx_draw_rect(game->ren, *game->levels->map->objects[o], 0x99cc44);
 				o++;
 			}
+			if (game->levels->map->map[j][i] == 'E')
+				ilx_draw_rect(game->ren, *game->levels->map->exit, 0x777777);
 			j++;
 		}
 		i++;
