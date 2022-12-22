@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:53:59 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/22 22:34:23 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/22 23:24:37 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_game_input
 	int	right;
 	int	up;
 	int	down;
+	int	jetpack;
 	int	exit;
 }	t_game_input;
 
@@ -34,6 +35,7 @@ typedef struct s_player
 	int			x;
 	int			y;
 	int			fall;
+	int			jetpack;
 	int			gravity;
 	int			speed;
 	int			lifes;

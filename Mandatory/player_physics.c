@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 18:45:32 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/22 22:10:22 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/22 23:38:44 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,12 @@ void	player_get_obj(t_game_data *data, t_player *player, t_ilx_rect *obj)
 			data->levels->update = 1;
 		}
 	}
+}
+
+void	player_jetpack(t_player *player)
+{
+	if (player->gravity > -13)
+		player->gravity -= 3;
 }
 
 void	player_fall(t_player *player)

@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 13:35:58 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/22 22:11:22 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/22 23:37:56 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void	player_input(t_game_data *data)
 		data->player->gravity -= 17;
 		data->inputs->up = 0;
 	}
+	if (data->inputs->jetpack == 1)
+		player_jetpack(data->player);
 }
 
 void	player_update(t_game_data *data)
