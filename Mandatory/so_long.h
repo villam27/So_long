@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:53:59 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/22 23:24:37 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/23 13:03:07 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,9 @@ typedef struct s_player
 	t_ilx_rect	*lastp;
 	int			x;
 	int			y;
+	int			x_move;
+	int			y_move;
 	int			fall;
-	int			jetpack;
 	int			gravity;
 	int			speed;
 	int			lifes;
@@ -44,6 +45,7 @@ typedef struct s_player
 typedef struct s_lvl_data
 {
 	t_map		*map;
+	t_ilx_point	camera_offsets;
 	int			update;
 }	t_lvl_data;
 

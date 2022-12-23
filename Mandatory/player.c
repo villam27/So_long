@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 13:35:58 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/22 23:37:56 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/23 13:44:59 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,15 @@ void	player_input(t_game_data *data)
 	data->player->lastp->x = data->player->x;
 	data->player->lastp->y = data->player->y;
 	if (data->inputs->left == 1)
+	{
+		data->levels->camera_offsets.x += data->player->speed;//data->player->speed;
 		data->player->x -= data->player->speed;
+	}
 	if (data->inputs->right == 1)
+	{
+		data->levels->camera_offsets.x -= data->player->speed;
 		data->player->x += data->player->speed;
+	}
 	if (data->inputs->up == 1 && !data->player->fall)
 	{
 		data->player->fall = 1;
@@ -57,6 +63,7 @@ void	player_input(t_game_data *data)
 	}
 	if (data->inputs->jetpack == 1)
 		player_jetpack(data->player);
+	ft_printf("%d\n", data->levels->camera_offsets.x);
 }
 
 void	player_update(t_game_data *data)

@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 01:13:28 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/18 18:32:49 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/23 13:56:17 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define ILX_WINDOW_H
 # include <mlx.h>
 # include "stdlib.h"
+
+typedef struct s_game_data	t_game_data;
 
 typedef struct s_ilx_renderer
 {
@@ -38,5 +40,5 @@ void			ilx_destroy_window(t_ilx_window *window);
 t_ilx_renderer	*ilx_create_renderer(t_ilx_window *window);
 void			ilx_destroy_renderer(t_ilx_window *win, t_ilx_renderer *ren);
 
-void			ilx_clear_renderer(t_ilx_renderer *rend);
+void			ilx_clear_renderer(t_ilx_renderer *ren, int c_x, int c_y);
 #endif

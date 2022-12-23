@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ILX_Window.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 01:25:18 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/22 15:40:16 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/23 14:11:12 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_ilx_renderer	*ilx_create_renderer(t_ilx_window *window)
 	renderer = malloc(sizeof(t_ilx_renderer));
 	if (!renderer)
 		return (NULL);
-	renderer->img = mlx_new_image(window->mlx, window->size_x, window->size_y);
+	renderer->img = mlx_new_image(window->mlx, window->size_x * 10, window->size_y * 10);
 	if (!renderer->img)
 		return (free(renderer), NULL);
 	renderer->addr = mlx_get_data_addr(renderer->img, &renderer->bits_per_px,
@@ -59,18 +59,18 @@ void	ilx_destroy_renderer(t_ilx_window *win, t_ilx_renderer *renderer)
 	free(renderer);
 }
 
-void	ilx_clear_renderer(t_ilx_renderer *rend)
+void	ilx_clear_renderer(t_ilx_renderer *ren, int c_x, int c_y)
 {
 	int	w;
 	int	h;
 
-	h = 0;
-	while (h < 600)
+	h = -c_y;
+	while (h < 600 + -c_y)
 	{
-		w = 0;
-		while (w < 800)
+		w = -c_x;
+		while (w < 800 + -c_x)
 		{
-			ilx_draw_px(rend, w, h, 0);
+			ilx_draw_px(ren, w, h, 0);
 			w++;
 		}
 		h++;
