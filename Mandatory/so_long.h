@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:53:59 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/23 13:03:07 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/23 23:55:52 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,15 @@ typedef struct s_game_input
 
 typedef struct s_player
 {
-	t_ilx_rect	*box;
-	t_ilx_rect	*lastp;
-	int			x;
-	int			y;
-	int			x_move;
-	int			y_move;
-	int			fall;
-	int			gravity;
-	int			speed;
-	int			lifes;
+	t_ilx_rect		*box;
+	t_ilx_rect		*lastp;
+	t_ilx_texture	*idle_img;
+	int				x;
+	int				y;
+	int				fall;
+	int				gravity;
+	int				speed;
+	int				lifes;
 }	t_player;
 
 typedef struct s_lvl_data

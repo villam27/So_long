@@ -6,7 +6,7 @@
 #    By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 23:55:26 by alboudje          #+#    #+#              #
-#    Updated: 2022/12/22 22:55:04 by alboudje         ###   ########.fr        #
+#    Updated: 2022/12/23 23:44:18 by alboudje         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRC_FILES		= 	main.c \
 					map_utils2.c \
 					ILX.c \
 					ILX_Rect.c \
+					ILX_Texture.c \
 					ILX_Rects.c \
 					ILX_Rect_utils.c \
 					ILX_Window.c
@@ -39,6 +40,7 @@ SRC 			= 	$(addprefix $(SRC_FOLDER), $(SRC_FILES))
 INCLUDES_FILES 	= 	ILX.h \
 					ILX_Keycodes.h \
 					ILX_Rect.h \
+					ILX_Texture.h \
 					ILX_Window.h \
 					map.h \
 					player.h \

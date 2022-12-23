@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 13:36:10 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/23 15:58:53 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/23 23:36:46 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define PLAYER_H
 # include "so_long.h"
 
-t_player	*create_player(int x, int y);
-void		destroy_player(t_player *player);
+t_player	*create_player(t_game_data *game, int x, int y);
+void		destroy_player(t_player *player, t_ilx_window *win);
 
 void		player_fall(t_player *player);
 void		player_jetpack(t_player *player);

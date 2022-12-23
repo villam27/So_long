@@ -6,13 +6,13 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 13:35:58 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/23 15:58:12 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/23 23:55:15 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "player.h"
 
-t_player	*create_player(int x, int y)
+t_player	*create_player(t_game_data *game, int x, int y)
 {
 	t_player	*player;
 
@@ -27,6 +27,9 @@ t_player	*create_player(int x, int y)
 	player->lastp = ilx_create_rect(player->x, player->y, 50, 50);
 	if (!player->lastp)
 		return (ilx_free_rect(player->box), free(player), NULL);
+	player->idle_img = ilx_create_texture(game->win, "assets/player_idle.xpm");
+	if (!player->idle_img)
+		return (NULL);
 	player->fall = 1;
 	player->gravity = 3;
 	player->speed = 6;
@@ -34,10 +37,11 @@ t_player	*create_player(int x, int y)
 	return (player);
 }
 
-void	destroy_player(t_player *player)
+void	destroy_player(t_player *player, t_ilx_window *window)
 {
 	ilx_free_rect(player->box);
 	ilx_free_rect(player->lastp);
+	ilx_destroy_texture(window, player->idle_img);
 	free(player);
 }
 
@@ -86,5 +90,6 @@ void	player_update(t_game_data *data)
 
 void	player_render(t_game_data *data)
 {
-	ilx_draw_rect(data->ren, *data->player->box, 0xff7777);
+	ilx_draw_texture(data->ren, data->player->x, data->player->y,
+		data->player->idle_img);
 }
