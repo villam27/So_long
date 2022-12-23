@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 12:27:27 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/23 13:15:32 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/23 14:23:09 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ void	level_render(t_game_data *game)
 		j = 0;
 		while (j < game->levels->map->data->rows)
 		{
-			render_map_box(game, &b, i , j);
-			render_map_obj(game, &o, i , j);
+			render_map_box(game, &b, i, j);
+			render_map_obj(game, &o, i, j);
 			if (game->levels->map->map[j][i] == 'E')
 				ilx_draw_rect(game->ren, *game->levels->map->exit, 0x777777);
 			j++;

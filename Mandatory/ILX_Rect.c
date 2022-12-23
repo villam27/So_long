@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 00:57:48 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/18 18:44:45 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/23 14:27:37 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ilx_draw_px(t_ilx_renderer *rend, int x, int y, int color)
 {
 	char	*dst;
 
-	if (x < 800 && x > 0 && y < 600 && y > 0)
+	if (x < 800 * 10 && x > 0 && y < 600 * 10 && y > 0)
 	{
 		dst = rend->addr + (y * rend->line_len + x * (rend->bits_per_px >> 3));
 		*(unsigned int *)dst = color;
