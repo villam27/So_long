@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 01:25:18 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/23 14:11:12 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/23 16:18:56 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ t_ilx_renderer	*ilx_create_renderer(t_ilx_window *window)
 	renderer = malloc(sizeof(t_ilx_renderer));
 	if (!renderer)
 		return (NULL);
-	renderer->img = mlx_new_image(window->mlx, window->size_x * 10, window->size_y * 10);
+	renderer->img = mlx_new_image(window->mlx,
+			window->size_x * 10, window->size_y * 10);
 	if (!renderer->img)
 		return (free(renderer), NULL);
 	renderer->addr = mlx_get_data_addr(renderer->img, &renderer->bits_per_px,

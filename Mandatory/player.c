@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 13:35:58 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/23 14:52:43 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/23 15:58:12 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,9 @@ void	player_input(t_game_data *data)
 	data->player->lastp->x = data->player->x;
 	data->player->lastp->y = data->player->y;
 	if (data->inputs->left == 1)
-	{
-	//	data->levels->camera_offsets.x += data->player->speed;//data->player->speed;
 		data->player->x -= data->player->speed;
-	}
 	if (data->inputs->right == 1)
-	{
-	//	data->levels->camera_offsets.x -= data->player->speed;
 		data->player->x += data->player->speed;
-	}
 	if (data->inputs->up == 1 && !data->player->fall)
 	{
 		data->player->fall = 1;
@@ -63,7 +57,6 @@ void	player_input(t_game_data *data)
 	}
 	if (data->inputs->jetpack == 1)
 		player_jetpack(data->player);
-	ft_printf("%d\n", data->levels->camera_offsets.x);
 }
 
 void	player_update(t_game_data *data)
@@ -88,14 +81,7 @@ void	player_update(t_game_data *data)
 	if (ilx_intersection_rect(data->player->box, data->levels->map->exit)
 		&& data->levels->map->data->objects == 0)
 		data->inputs->exit = 1;
-	data->player->box->x = data->player->x;
-	data->player->box->y = data->player->y;
-	data->levels->camera_offsets.x = -data->player->x + 400;
-	data->levels->camera_offsets.y = -data->player->y + 300;
-	if (data->levels->camera_offsets.x > 0)
-		data->levels->camera_offsets.x = 0;
-	if (data->levels->camera_offsets.y > 0)
-		data->levels->camera_offsets.y = 0;
+	player_camera(data);
 }
 
 void	player_render(t_game_data *data)

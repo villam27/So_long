@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 18:45:32 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/23 14:41:57 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/23 16:18:31 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,22 @@ void	player_jetpack(t_player *player)
 {
 	if (player->gravity > -13)
 		player->gravity -= 3;
+}
+
+void	player_camera(t_game_data *data)
+{
+	data->player->box->x = data->player->x;
+	data->player->box->y = data->player->y;
+	data->levels->camera_offsets.x = -data->player->x + 400;
+	data->levels->camera_offsets.y = -data->player->y + 300;
+	if (-data->levels->camera_offsets.x
+		> (data->levels->map->data->cols * 64) - 800)
+		data->levels->camera_offsets.x
+			= -(data->levels->map->data->cols * 64) + 800;
+	if (data->levels->camera_offsets.x > 0)
+		data->levels->camera_offsets.x = 0;
+	if (data->levels->camera_offsets.y > 0)
+		data->levels->camera_offsets.y = 0;
 }
 
 void	player_fall(t_player *player)
