@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 23:19:18 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/24 12:58:51 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/24 16:34:37 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ void	ilx_render_copy(t_ilx_renderer *rend, t_ilx_texture *tex,
 		j = 0;
 		while (j < rec->w)
 		{
-			if ((pos->x < 800 * 10 && pos->x > 0 && pos->y < 600 * 10 && pos->y > 0)
-				&& (rec->x + j < tex->w && rec->x + j > 0
-					&& rec->y + i < tex->h && rec->y + i > 0))
+			if ((pos->x < 800 * 10 && pos->x >= 0 && pos->y < 600 * 10 && pos->y >= 0)
+				&& (rec->x + j < tex->w && rec->x + j >= 0
+					&& rec->y + i < tex->h && rec->y + i >= 0))
 			{
 				dst = (rend->addr + ((pos->y + i) * rend->line_len + (pos->x + j)
 							*(rend->bits_per_px >> 3)));

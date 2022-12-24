@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:53:59 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/24 14:12:05 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/24 17:54:18 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,15 @@ typedef struct s_player
 
 typedef struct s_lvl_data
 {
-	t_map		*map;
-	t_ilx_point	camera_offsets;
-	int			update;
+	t_map			*map;
+	t_ilx_point		camera_offsets;
+	int				update;
+	int				anim;
+	int				anim_i;
+	t_ilx_texture	*tiles;
+	t_ilx_texture	*object;
+	t_ilx_rect		rect;
+	t_ilx_point		pts;
 }	t_lvl_data;
 
 typedef struct s_game_data
@@ -71,12 +77,12 @@ t_game_data	*ini_game(t_ilx_window *w, t_ilx_renderer *r, t_game_input *i,
 				char *path);
 void		close_game(t_game_data *game);
 
-t_lvl_data	*create_level(char *path);
+t_lvl_data	*create_level(char *path, t_ilx_window *win);
 void		update_map_box(t_game_data *game, int *b, int i, int j);
 void		render_map_box(t_game_data *game, int *b, int i, int j);
 void		update_map_obj(t_game_data *data, int *o, int i, int j);
 void		render_map_obj(t_game_data *game, int *o, int i, int j);
 void		level_update(t_game_data *game);
 void		level_render(t_game_data *game);
-void		free_level(t_lvl_data *level);
+void		free_level(t_game_data *game);
 #endif
