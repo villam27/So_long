@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 18:45:32 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/23 16:18:31 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/24 14:32:41 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,10 @@ void	player_camera(t_game_data *data)
 		> (data->levels->map->data->cols * 64) - 800)
 		data->levels->camera_offsets.x
 			= -(data->levels->map->data->cols * 64) + 800;
+	if (-data->levels->camera_offsets.y
+		> (data->levels->map->data->rows * 64) - 600)
+		data->levels->camera_offsets.y
+			= -(data->levels->map->data->rows * 64) + 600;
 	if (data->levels->camera_offsets.x > 0)
 		data->levels->camera_offsets.x = 0;
 	if (data->levels->camera_offsets.y > 0)

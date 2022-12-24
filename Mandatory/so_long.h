@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:53:59 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/23 23:55:52 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/24 14:12:05 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef struct s_player
 {
 	t_ilx_rect		*box;
 	t_ilx_rect		*lastp;
+	t_ilx_rect		dst_r;
+	t_ilx_point		pts;
 	t_ilx_texture	*idle_img;
 	int				x;
 	int				y;
