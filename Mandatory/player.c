@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 13:35:58 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/23 23:55:15 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/24 12:59:44 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,16 @@ void	player_update(t_game_data *data)
 
 void	player_render(t_game_data *data)
 {
+	t_ilx_rect	rect;
+	t_ilx_point	pts;
+
 	ilx_draw_texture(data->ren, data->player->x, data->player->y,
 		data->player->idle_img);
+	pts.x = 400;
+	pts.y = 70;
+	rect.x = 30;
+	rect.y = 0;
+	rect.h = 500;
+	rect.w = 500;
+	ilx_render_copy(data->ren, data->player->idle_img, &pts, &rect);
 }
