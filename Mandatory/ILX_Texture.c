@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 23:19:18 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/24 16:34:37 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/24 19:23:45 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	ilx_draw_texture(t_ilx_renderer *rend, int x, int y,
 		j = 0;
 		while (j < tex->w)
 		{
-			if (x < 800 * 10 && x > 0 && y < 600 * 10 && y > 0)
+			if (x < 800 * 10 && x >= 0 && y < 600 * 10 && y >= 0)
 			{
 				dst = (rend->addr + ((y + i) * rend->line_len + (x + j)
 							*(rend->bits_per_px >> 3)));

@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 11:49:37 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/24 16:41:27 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/24 19:19:03 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,15 @@ t_game_data	*ini_game(t_ilx_window *win, t_ilx_renderer *ren, t_game_input *in,
 	game->ren = ren;
 	game->inputs = in;
 	game->player = NULL;
+	game->background = ilx_create_texture(win, "assets/bg.xpm");
 	game->levels = create_level(path, win);
 	if (!game->levels)
 		return (close_game(game), NULL);
 	game->player = create_player(game, game->levels->map->data->player_pos.x,
 			game->levels->map->data->player_pos.y);
 	if (!game->player)
+		return (close_game(game), NULL);
+	if (!game->background)
 		return (close_game(game), NULL);
 	return (game);
 }
@@ -41,6 +44,8 @@ void	close_game(t_game_data *game)
 		destroy_player(game->player, game->win);
 	if (game->levels)
 		free_level(game);
+	if (game->background)
+		ilx_destroy_texture(game->win, game->background);
 	ilx_destroy_renderer(game->win, game->ren);
 	ilx_destroy_window(game->win);
 	free(game);

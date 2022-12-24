@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 12:27:27 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/24 17:56:01 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/24 20:00:06 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ t_lvl_data	*create_level(char *path, t_ilx_window *win)
 	level->object = ilx_create_texture(win, "assets/object.xpm");
 	if (!level->object)
 		return (ilx_destroy_texture(win, level->tiles), free(level), NULL);
+	level->rocket = ilx_create_texture(win, "assets/rocket.xpm");
+	if (!level->rocket)
+		return (ilx_destroy_texture(win, level->tiles), ilx_destroy_texture(win, level->object), free(level), NULL);
 	level->map = open_map(path);
 	if (!level->map)
 		return (ilx_destroy_texture(win, level->tiles), ilx_destroy_texture(win, level->object), free(level), NULL);
@@ -70,6 +73,7 @@ void	level_update(t_game_data *game)
 		}
 		game->levels->update = 0;
 	}
+	game->levels->anim += game->levels->anim_i;
 }
 
 void	level_render(t_game_data *game)
@@ -94,12 +98,12 @@ void	level_render(t_game_data *game)
 			render_map_box(game, &b, i, j);
 			render_map_obj(game, &o, i, j);
 			if (game->levels->map->map[j][i] == 'E')
-				ilx_draw_rect(game->ren, *game->levels->map->exit, 0x777777);
+				ilx_draw_texture(game->ren, 64 * i, 64 * j, game->levels->rocket);
+			//	ilx_draw_rect(game->ren, *game->levels->map->exit, 0x777777);
 			j++;
 		}
 		i++;
 	}
-	game->levels->anim += game->levels->anim_i;
 }
 
 void	free_level(t_game_data *game)
@@ -107,5 +111,6 @@ void	free_level(t_game_data *game)
 	destroy_map(game->levels->map);
 	ilx_destroy_texture(game->win, game->levels->tiles);
 	ilx_destroy_texture(game->win, game->levels->object);
+	ilx_destroy_texture(game->win, game->levels->rocket);
 	free(game->levels);
 }
