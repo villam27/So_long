@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 20:45:11 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/22 22:57:43 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/25 19:24:46 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_map_data
 	int			objects;
 	int			player;
 	int			exit;
+	int			error;
 	t_ilx_point	player_pos;
 	t_ilx_point	exit_pos;
 }	t_map_data;
@@ -48,5 +49,6 @@ int			check_walls(t_map *map);
 int			check_path(int *objs, char ***temp_map, int x, int y);
 int			check_map(t_map *map);
 char		**map_dup(t_map *map);
+int			print_map_error(int error);
 
 #endif

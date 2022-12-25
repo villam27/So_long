@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 14:30:43 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/22 22:15:05 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/25 19:13:52 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void	get_row_data(char *row, t_map_data **data)
 			(*data)->exit_pos.x = i;
 			(*data)->exit_pos.y = (*data)->rows;
 		}
+		else if (row[i] != '0' && row[i] != '\n')
+			(*data)->error = 1;
 		i++;
 	}
 }

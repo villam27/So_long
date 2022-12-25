@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 20:45:18 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/22 22:58:51 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/25 19:24:59 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_map	*open_map(char *path)
 	close(map_fd);
 	if (!map)
 		return (free(map_data), NULL);
-	if (check_map(map))
+	if (print_map_error(check_map(map)))
 		return (destroy_map(map), NULL);
 	return (map);
 }
@@ -51,6 +51,7 @@ t_map_data	*get_map_data(int fd)
 	map->objects = 0;
 	map->walls = 0;
 	map->player = 0;
+	map->error = 0;
 	map->exit = 0;
 	while (map_line)
 	{
@@ -91,7 +92,8 @@ int	check_map(t_map *map)
 	int		objects;
 
 	objects = 0;
-	if (map->data->player != 1 || map->data->exit != 1)
+	if (map->data->player != 1 || map->data->exit != 1
+		|| map->data->error != 0)
 		return (1);
 	if (check_rect(map))
 		return (2);
