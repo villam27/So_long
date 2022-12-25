@@ -6,11 +6,26 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 22:19:46 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/24 18:34:19 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/25 17:54:32 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
+
+int	load_textures(t_lvl_data *level, t_ilx_window *win)
+{	
+	level->tiles = ilx_create_texture(win, "assets/tiles.xpm");
+	if (!level->tiles)
+		return (1);
+	level->object = ilx_create_texture(win, "assets/object.xpm");
+	if (!level->object)
+		return (ilx_destroy_texture(win, level->tiles), 1);
+	level->rocket = ilx_create_texture(win, "assets/rocket.xpm");
+	if (!level->rocket)
+		return (ilx_destroy_texture(win, level->tiles),
+			ilx_destroy_texture(win, level->object), 1);
+	return (0);
+}
 
 void	update_map_box(t_game_data *game, int *b, int i, int j)
 {
@@ -48,7 +63,7 @@ void	render_map_box(t_game_data *game, int *b, int i, int j)
 
 void	render_map_obj(t_game_data *game, int *o, int i, int j)
 {
-	int x;
+	int	x;
 	int	y;
 
 	x = game->levels->map->objects[*o]->x;

@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 12:27:27 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/24 20:00:06 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/25 17:54:09 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,23 +25,17 @@ t_lvl_data	*create_level(char *path, t_ilx_window *win)
 	level->update = 1;
 	level->camera_offsets.x = 0;
 	level->camera_offsets.y = 0;
-	level->tiles = ilx_create_texture(win, "assets/tiles.xpm");
-	if (!level->tiles)
+	if (load_textures(level, win))
 		return (free(level), NULL);
-	level->object = ilx_create_texture(win, "assets/object.xpm");
-	if (!level->object)
-		return (ilx_destroy_texture(win, level->tiles), free(level), NULL);
-	level->rocket = ilx_create_texture(win, "assets/rocket.xpm");
-	if (!level->rocket)
-		return (ilx_destroy_texture(win, level->tiles), ilx_destroy_texture(win, level->object), free(level), NULL);
 	level->map = open_map(path);
 	if (!level->map)
-		return (ilx_destroy_texture(win, level->tiles), ilx_destroy_texture(win, level->object), free(level), NULL);
+		return (ilx_destroy_texture(win, level->tiles),
+			ilx_destroy_texture(win, level->object), free(level), NULL);
 	level->pts.x = 0;
 	level->pts.y = 0;
 	level->rect.x = 64 * 1;
 	level->rect.y = 64 * 1;
-	level->rect.h = 64; 
+	level->rect.h = 64;
 	level->rect.w = 64;
 	level->anim = 0;
 	level->anim_i = 1;
@@ -78,31 +72,30 @@ void	level_update(t_game_data *game)
 
 void	level_render(t_game_data *game)
 {
-	int	i;
-	int	j;
-	int	b;
-	int	o;
+	t_ilx_point	pts;
+	int			b;
+	int			o;
 
-	i = 0;
+	pts.x = 0;
 	b = 0;
 	o = 0;
 	if (game->levels->anim >= 10)
 		game->levels->anim_i = -1;
 	if (game->levels->anim <= -10)
 		game->levels->anim_i = 1;
-	while (i < game->levels->map->data->cols)
+	while (pts.x < game->levels->map->data->cols)
 	{
-		j = 0;
-		while (j < game->levels->map->data->rows)
+		pts.y = 0;
+		while (pts.y < game->levels->map->data->rows)
 		{
-			render_map_box(game, &b, i, j);
-			render_map_obj(game, &o, i, j);
-			if (game->levels->map->map[j][i] == 'E')
-				ilx_draw_texture(game->ren, 64 * i, 64 * j, game->levels->rocket);
-			//	ilx_draw_rect(game->ren, *game->levels->map->exit, 0x777777);
-			j++;
+			render_map_box(game, &b, pts.x, pts.y);
+			render_map_obj(game, &o, pts.x, pts.y);
+			if (game->levels->map->map[pts.y][pts.x] == 'E')
+				ilx_draw_texture(game->ren, 64 * pts.x, 64 * pts.y,
+					game->levels->rocket);
+			pts.y++;
 		}
-		i++;
+		pts.x++;
 	}
 }
 

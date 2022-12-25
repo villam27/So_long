@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 23:19:18 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/24 19:23:45 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/25 17:46:37 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,26 @@ void	ilx_draw_texture(t_ilx_renderer *rend, int x, int y,
 	}
 }
 
-void	ilx_render_copy(t_ilx_renderer *rend, t_ilx_texture *tex,
-			t_ilx_point *pos, t_ilx_rect *rec)
+static void	ilx_render_px(t_ilx_renderer *rend,
+	t_ilx_texture *tex, t_ilx_rect *values)
 {
 	char		*dst;
 	char		*src;
+
+	dst = (rend->addr + ((values->x) * rend->line_len + (values->y)
+				*(rend->bits_per_px >> 3)));
+	src = (tex->addr + ((values->w) * tex->line_len + (values->h)
+				*(tex->bits_per_px >> 3)));
+	if (*(unsigned *)src != 0xff000000)
+		*(unsigned long *)dst = *(unsigned long *)src;
+}
+
+void	ilx_render_copy(t_ilx_renderer *rend, t_ilx_texture *tex,
+			t_ilx_point *pos, t_ilx_rect *rec)
+{
 	int			i;
 	int			j;
+	t_ilx_rect	p;
 
 	i = 0;
 	while (i < rec->h)
@@ -73,20 +86,14 @@ void	ilx_render_copy(t_ilx_renderer *rend, t_ilx_texture *tex,
 		j = 0;
 		while (j < rec->w)
 		{
-			if ((pos->x < 800 * 10 && pos->x >= 0 && pos->y < 600 * 10 && pos->y >= 0)
-				&& (rec->x + j < tex->w && rec->x + j >= 0
+			p = ilx_new_rect(pos->y + i, pos->x + j, rec->y + i, rec->x + j);
+			if ((pos->x < 800 * 10 && pos->x >= 0 && pos->y < 600 * 10
+					&& pos->y >= 0) && (rec->x + j < tex->w && rec->x + j >= 0
 					&& rec->y + i < tex->h && rec->y + i >= 0))
-			{
-				dst = (rend->addr + ((pos->y + i) * rend->line_len + (pos->x + j)
-							*(rend->bits_per_px >> 3)));
-				src = (tex->addr + ((rec->y + i) * tex->line_len + (rec->x + j)
-							*(tex->bits_per_px >> 3)));
-				if (*(unsigned *)src != 0xff000000)
-						*(unsigned long *)dst = *(unsigned long *)src;
-			}
+				ilx_render_px(rend, tex, &p);
 			j++;
 		}
-		i++;
+	i++;
 	}
 }
 

@@ -6,7 +6,7 @@
 #    By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 23:55:26 by alboudje          #+#    #+#              #
-#    Updated: 2022/12/23 23:44:18 by alboudje         ###   ########.fr        #
+#    Updated: 2022/12/25 17:08:50 by alboudje         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRC_FILES		= 	main.c \
 					so_long.c \
 					player.c \
 					player_physics.c \
+					player_utils.c \
 					game.c \
 					level.c \
 					level_utils.c \

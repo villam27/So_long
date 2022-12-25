@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 00:57:48 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/23 14:27:37 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/25 17:04:44 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,17 @@ t_ilx_rect	*ilx_create_rect(int x, int y, int w, int h)
 	rect->y = y;
 	rect->w = w;
 	rect->h = h;
+	return (rect);
+}
+
+t_ilx_rect	ilx_new_rect(int x, int y, int w, int h)
+{
+	t_ilx_rect	rect;
+
+	rect.x = x;
+	rect.y = y;
+	rect.w = w;
+	rect.h = h;
 	return (rect);
 }
 

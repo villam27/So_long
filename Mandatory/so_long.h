@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:53:59 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/24 19:52:33 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/25 17:49:37 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ t_game_data	*ini_game(t_ilx_window *w, t_ilx_renderer *r, t_game_input *i,
 void		close_game(t_game_data *game);
 
 t_lvl_data	*create_level(char *path, t_ilx_window *win);
+int			load_textures(t_lvl_data *level, t_ilx_window *win);
 void		update_map_box(t_game_data *game, int *b, int i, int j);
 void		render_map_box(t_game_data *game, int *b, int i, int j);
 void		update_map_obj(t_game_data *data, int *o, int i, int j);
