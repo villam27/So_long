@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:55:09 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/25 19:41:16 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/26 15:34:55 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ static int	init_all(t_game_data **game, t_game_input *in, char *path)
 		return (1);
 	}
 	*game = ini_game(win, ren, in, path);
-	if (!(*game))
-		return (1);
-	return (0);
+	if (*game)
+		return (0);
+	return (1);
 }
 
 int	main(int argc, char **argv)
@@ -62,9 +62,7 @@ int	main(int argc, char **argv)
 	char			*ext;
 
 	ext = ft_strrchr(argv[1], '.');
-	if (!ext)
-		return (EXIT_FAILURE);
-	if (argc == 2 && !ft_strncmp(".ber", ext, 5)
+	if (ext && argc == 2 && !ft_strncmp(".ber", ext, 5)
 		&& !init_all(&game, &inputs, argv[1]))
 	{
 		mlx_hook(game->win->mlx_win, 17, 0, win_close, game);
@@ -73,7 +71,7 @@ int	main(int argc, char **argv)
 		mlx_loop_hook(game->win->mlx, next_frame, game);
 		mlx_loop(game->win->mlx);
 	}
-	else
-		return (EXIT_FAILURE);
-	return (EXIT_SUCCESS);
+	ft_putstr_fd("An error has occurred, ", 2);
+	ft_putstr_fd("try to restart the game with valid map or path\n", 2);
+	return (EXIT_FAILURE);
 }

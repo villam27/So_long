@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 12:27:27 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/25 17:54:09 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/26 14:56:02 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ t_lvl_data	*create_level(char *path, t_ilx_window *win)
 	level->map = open_map(path);
 	if (!level->map)
 		return (ilx_destroy_texture(win, level->tiles),
-			ilx_destroy_texture(win, level->object), free(level), NULL);
+				ilx_destroy_texture(win, level->rocket),
+				ilx_destroy_texture(win, level->object), free(level), NULL);
 	level->pts.x = 0;
 	level->pts.y = 0;
 	level->rect.x = 64 * 1;
