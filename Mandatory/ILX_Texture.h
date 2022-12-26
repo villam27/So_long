@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 22:37:39 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/24 13:00:08 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/26 16:02:08 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_ilx_texture
 	int		endian;
 	int		w;
 	int		h;
+	int		flip;
 }	t_ilx_texture;
 
 t_ilx_texture	*ilx_create_texture(t_ilx_window *win, char *path);

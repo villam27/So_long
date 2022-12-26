@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 23:19:18 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/25 17:46:37 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/26 16:20:35 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ t_ilx_texture	*ilx_create_texture(t_ilx_window *window, char *path)
 			&sprite->line_len, &sprite->endian);
 	if (!sprite->addr)
 		return ((void)mlx_destroy_image(window->mlx, sprite->img), NULL);
+	sprite->flip = 0;
 	return (sprite);
 }
 
@@ -87,6 +88,9 @@ void	ilx_render_copy(t_ilx_renderer *rend, t_ilx_texture *tex,
 		while (j < rec->w)
 		{
 			p = ilx_new_rect(pos->y + i, pos->x + j, rec->y + i, rec->x + j);
+			if (tex->flip)
+				p = ilx_new_rect(pos->y + i, pos->x + j, rec->y + i,
+						rec->w + rec->x - j - 1);
 			if ((pos->x < 800 * 10 && pos->x >= 0 && pos->y < 600 * 10
 					&& pos->y >= 0) && (rec->x + j < tex->w && rec->x + j >= 0
 					&& rec->y + i < tex->h && rec->y + i >= 0))
