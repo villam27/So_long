@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 01:10:24 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/24 19:32:14 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/26 18:14:19 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ void	update(t_game_data *game)
 }
 
 void	render(t_game_data *game)
-{	
+{
+	char	*step;
+
 	ilx_clear_renderer(game->ren, game->levels->camera_offsets.x,
 		game->levels->camera_offsets.y);
 	ilx_draw_texture(game->ren, -game->levels->camera_offsets.x,
@@ -36,6 +38,11 @@ void	render(t_game_data *game)
 	mlx_put_image_to_window(game->win->mlx, game->win->mlx_win,
 		game->ren->img, game->levels->camera_offsets.x,
 		game->levels->camera_offsets.y);
+	mlx_string_put(game->win->mlx, game->win->mlx_win,
+		20, 20, 0xfffff, "MOVEMENTS:");
+	step = ft_itoa(game->player->steps);
+	mlx_string_put(game->win->mlx, game->win->mlx_win, 80, 20, 0xfffff, step);
+	free(step);
 }
 
 int	win_close(t_game_data *game)

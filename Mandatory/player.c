@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 13:35:58 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/26 16:13:54 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/26 18:04:21 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,8 @@ t_player	*create_player(t_game_data *game, int x, int y)
 	player->gravity = 3;
 	player->speed = 6;
 	player->lifes = 3;
-	player->dst_r.w = 64;
-	player->dst_r.h = 64;
-	player->dst_r.x = 0;
-	player->dst_r.y = 0;
+	player->steps = 0;
+	player->dst_r = ilx_new_rect(0, 0, 64, 64);
 	return (player);
 }
 

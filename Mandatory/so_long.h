@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:53:59 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/26 15:04:46 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/26 18:04:34 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_player
 	int				gravity;
 	int				speed;
 	int				lifes;
+	int				steps;
 }	t_player;
 
 typedef struct s_lvl_data

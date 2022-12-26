@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 16:44:50 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/25 16:46:59 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/26 18:05:29 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	render_animation(t_game_data *data)
 		{
 			data->player->dst_r.x += 64;
 			frames = 0;
+			data->player->steps++;
 		}
 		if (data->player->dst_r.x > 64 * 3)
 			data->player->dst_r.x = 0;
