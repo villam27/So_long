@@ -6,7 +6,7 @@
 /*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 13:36:10 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/27 16:06:23 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/27 16:23:39 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include "so_long.h"
 
 t_player	*create_player(t_game_data *game, int x, int y);
-int			player_load_texture(t_game_data *game);
+int			player_load_texture(t_player *player, t_ilx_window *win);
 void		destroy_player(t_player *player, t_ilx_window *win);
 
 void		player_fall(t_player *player);

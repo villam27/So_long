@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: alboudje <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 23:55:26 by alboudje          #+#    #+#              #
-#    Updated: 2022/12/26 15:14:57 by alboudje         ###   ########.fr        #
+#    Updated: 2022/12/27 16:27:50 by alboudje         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ INCLUDES_FILES 	= 	ILX.h \
 INCLUDES 		= 	$(addprefix $(SRC_FOLDER), $(INCLUDES_FILES))
 
 OBJ 			= 	${SRC:.c=.o}
-CFLAGS 			= 	-Wall -Wextra #-g3 -fsanitize=address
+CFLAGS 			= 	-Wall -Wextra -Werror #-g3 -fsanitize=address
 UNAME_S			:=	$(shell uname -s)
 
 ifeq ($(UNAME_S), Linux)

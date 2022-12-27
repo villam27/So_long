@@ -6,7 +6,7 @@
 /*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 13:35:58 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/27 16:07:55 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/27 16:26:18 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_player	*create_player(t_game_data *game, int x, int y)
 	player->lastp = ilx_create_rect(player->x, player->y, 40, 50);
 	if (!player->lastp)
 		return (ilx_free_rect(player->box), free(player), NULL);
-	if (player_load_texture(game))
+	if (player_load_texture(player, game->win))
 		return (ilx_free_rect(player->box),
 			ilx_free_rect(player->lastp), free(player), NULL);
 	player->fall = 1;
@@ -68,6 +68,7 @@ void	player_input(t_game_data *data)
 		data->player->fall = 1;
 		data->player->gravity -= 17;
 		data->inputs->up = 0;
+		data->player->steps++;
 	}
 	if (data->inputs->jetpack == 1)
 		player_jetpack(data->player);

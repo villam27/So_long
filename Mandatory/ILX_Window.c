@@ -6,11 +6,12 @@
 /*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 01:25:18 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/27 16:09:10 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/27 16:24:52 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ILX_Window.h"
+#include "ILX_Rect.h"
 
 t_ilx_window	*ilx_create_window(int size_x, int size_y, char *title)
 {

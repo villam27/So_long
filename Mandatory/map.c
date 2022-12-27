@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 20:45:18 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/26 16:20:00 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/27 16:24:38 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_map	*open_map(char *path)
 	t_map_data	*map_data;
 	t_map		*map;
 
-	map == NULL;
+	map = NULL;
 	map_fd = open(path, O_RDONLY);
 	if (map_fd == -1)
 		return (perror(path), NULL);

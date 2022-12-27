@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 14:30:43 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/25 19:13:52 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/27 16:28:26 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ int	check_rect(t_map *map)
 	while (i < map->data->rows)
 	{
 		if (i == map->data->rows - 1
-			&& ft_strlen(map->map[i]) != map->data->cols)
+			&& ft_strlen(map->map[i]) != (size_t)map->data->cols)
 			return (1);
 		if (i < map->data->rows - 1
-			&& ft_strlen(map->map[i]) - 1 != map->data->cols)
+			&& ft_strlen(map->map[i]) - 1 != (size_t)map->data->cols)
 			return (1);
 		i++;
 	}

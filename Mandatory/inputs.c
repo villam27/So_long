@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inputs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 18:42:27 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/22 23:23:10 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/27 16:24:29 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,5 @@ int	input_key_up(int keycode, t_game_input *inputs)
 		inputs->down = 0;
 	if (keycode == SPACE)
 		inputs->jetpack = 0;
+	return (0);
 }

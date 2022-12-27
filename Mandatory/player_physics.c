@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_physics.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 18:45:32 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/24 14:32:41 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/27 16:25:54 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	player_jetpack(t_player *player)
 {
 	if (player->gravity > -13)
 		player->gravity -= 3;
+	player->steps++;
 }
 
 void	player_camera(t_game_data *data)
