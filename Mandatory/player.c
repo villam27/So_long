@@ -6,7 +6,7 @@
 /*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 13:35:58 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/27 15:12:53 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/27 16:07:55 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,9 @@ t_player	*create_player(t_game_data *game, int x, int y)
 	player->lastp = ilx_create_rect(player->x, player->y, 40, 50);
 	if (!player->lastp)
 		return (ilx_free_rect(player->box), free(player), NULL);
-	player->sprite = ilx_create_texture(game->win, "assets/player.xpm");
-	if (!player->sprite)
-		return (NULL);
-	player->particle = ilx_create_texture(game->win, "assets/particles.xpm");
-	if (!player->particle)
-		return (NULL);
+	if (player_load_texture(game))
+		return (ilx_free_rect(player->box),
+			ilx_free_rect(player->lastp), free(player), NULL);
 	player->fall = 1;
 	player->gravity = 3;
 	player->speed = 6;

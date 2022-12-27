@@ -6,7 +6,7 @@
 /*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 16:44:50 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/27 15:23:05 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/27 16:09:20 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	render_particle(t_game_data *data)
 
 	data->player->pts_p.y = data->player->y + 20;
 	data->player->pts_p.x = data->player->x - 14;
-	if (frame >= 5)
+	if (frame >= 4)
 	{
 		data->player->dst_p.x += 64;
 		frame = 0;
@@ -28,6 +28,20 @@ static void	render_particle(t_game_data *data)
 	ilx_render_copy(data->ren, data->player->particle,
 		&data->player->pts_p, &data->player->dst_p);
 	frame++;
+}
+
+int	player_load_texture(t_game_data *game)
+{
+	t_player	*player;
+
+	player = game->player;
+	player->sprite = ilx_create_texture(game->win, "assets/player.xpm");
+	if (!player->sprite)
+		return (1);
+	player->particle = ilx_create_texture(game->win, "assets/particles.xpm");
+	if (!player->particle)
+		return (ilx_destroy_texture(game->win, player->sprite), 1);
+	return (0);
 }
 
 void	render_animation(t_game_data *data)
