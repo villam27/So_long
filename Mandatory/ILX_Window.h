@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ILX_Window.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 01:13:28 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/23 23:17:57 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/27 14:48:42 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ILX_WINDOW_H
 # define ILX_WINDOW_H
+# define MAX_MAP 6000
 # include <mlx.h>
 # include "stdlib.h"
 

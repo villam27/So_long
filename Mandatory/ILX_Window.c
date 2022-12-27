@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ILX_Window.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 01:25:18 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/26 15:36:20 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/27 14:42:34 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_ilx_window	*ilx_create_window(int size_x, int size_y, char *title)
 void	ilx_destroy_window(t_ilx_window *window)
 {
 	mlx_destroy_window(window->mlx, window->mlx_win);
-	free(window->mlx);
+	//free(window->mlx);
 	free(window);
 }
 
@@ -44,8 +44,7 @@ t_ilx_renderer	*ilx_create_renderer(t_ilx_window *window)
 	renderer = malloc(sizeof(t_ilx_renderer));
 	if (!renderer)
 		return (NULL);
-	renderer->img = mlx_new_image(window->mlx,
-			window->size_x * 10, window->size_y * 10);
+	renderer->img = mlx_new_image(window->mlx, MAX_MAP, MAX_MAP);
 	if (!renderer->img)
 		return (free(renderer), NULL);
 	renderer->addr = mlx_get_data_addr(renderer->img, &renderer->bits_per_px,

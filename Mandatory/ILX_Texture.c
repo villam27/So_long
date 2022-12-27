@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ILX_Texture.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 23:19:18 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/26 16:20:35 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/27 14:43:16 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ilx_draw_texture(t_ilx_renderer *rend, int x, int y,
 		j = 0;
 		while (j < tex->w)
 		{
-			if (x < 800 * 10 && x >= 0 && y < 600 * 10 && y >= 0)
+			if (x < MAX_MAP && x >= 0 && y < MAX_MAP && y >= 0)
 			{
 				dst = (rend->addr + ((y + i) * rend->line_len + (x + j)
 							*(rend->bits_per_px >> 3)));
@@ -91,7 +91,7 @@ void	ilx_render_copy(t_ilx_renderer *rend, t_ilx_texture *tex,
 			if (tex->flip)
 				p = ilx_new_rect(pos->y + i, pos->x + j, rec->y + i,
 						rec->w + rec->x - j - 1);
-			if ((pos->x < 800 * 10 && pos->x >= 0 && pos->y < 600 * 10
+			if ((pos->x < MAX_MAP && pos->x >= 0 && pos->y < MAX_MAP
 					&& pos->y >= 0) && (rec->x + j < tex->w && rec->x + j >= 0
 					&& rec->y + i < tex->h && rec->y + i >= 0))
 				ilx_render_px(rend, tex, &p);

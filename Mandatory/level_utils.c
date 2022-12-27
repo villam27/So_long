@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   level_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 22:19:46 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/25 17:54:32 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/27 14:09:56 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ void	render_map_obj(t_game_data *game, int *o, int i, int j)
 	int	x;
 	int	y;
 
-	x = game->levels->map->objects[*o]->x;
-	y = game->levels->map->objects[*o]->y + game->levels->anim;
 	if (game->levels->map->map[j][i] == 'C')
 	{
+		x = game->levels->map->objects[*o]->x;
+		y = game->levels->map->objects[*o]->y + game->levels->anim;
 		ilx_draw_texture(game->ren, x, y, game->levels->object);
 		(*o)++;
 	}
