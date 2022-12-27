@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 20:45:18 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/27 16:24:38 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/27 22:20:48 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,9 +112,6 @@ int	check_map(t_map *map)
 
 void	destroy_map(t_map *map)
 {
-	int	i;
-
-	i = 0;
 	ilx_free_rects(map->boxs);
 	ilx_free_rects(map->objects);
 	ilx_free_rect(map->exit);
