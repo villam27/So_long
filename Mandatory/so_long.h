@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:53:59 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/26 18:04:34 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/27 15:13:52 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,12 @@ typedef struct s_player
 {
 	t_ilx_rect		*box;
 	t_ilx_rect		*lastp;
-	t_ilx_rect		dst_r;
+	t_ilx_rect		dst_s;
+	t_ilx_rect		dst_p;
 	t_ilx_point		pts;
-	t_ilx_texture	*idle_img;
+	t_ilx_point		pts_p;
+	t_ilx_texture	*sprite;
+	t_ilx_texture	*particle;
 	int				x;
 	int				y;
 	int				fall;

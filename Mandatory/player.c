@@ -6,7 +6,7 @@
 /*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 13:35:58 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/27 14:30:04 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/27 15:12:53 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,19 @@ t_player	*create_player(t_game_data *game, int x, int y)
 	player->lastp = ilx_create_rect(player->x, player->y, 40, 50);
 	if (!player->lastp)
 		return (ilx_free_rect(player->box), free(player), NULL);
-	player->idle_img = ilx_create_texture(game->win, "assets/player.xpm");
-	if (!player->idle_img)
+	player->sprite = ilx_create_texture(game->win, "assets/player.xpm");
+	if (!player->sprite)
+		return (NULL);
+	player->particle = ilx_create_texture(game->win, "assets/particles.xpm");
+	if (!player->particle)
 		return (NULL);
 	player->fall = 1;
 	player->gravity = 3;
 	player->speed = 6;
 	player->lifes = 3;
 	player->steps = 0;
-	player->dst_r = ilx_new_rect(0, 0, 64, 64);
+	player->dst_s = ilx_new_rect(0, 0, 64, 64);
+	player->dst_p = ilx_new_rect(0, 0, 64, 64);
 	return (player);
 }
 
@@ -43,7 +47,8 @@ void	destroy_player(t_player *player, t_ilx_window *window)
 {
 	ilx_free_rect(player->box);
 	ilx_free_rect(player->lastp);
-	ilx_destroy_texture(window, player->idle_img);
+	ilx_destroy_texture(window, player->sprite);
+	ilx_destroy_texture(window, player->particle);
 	free(player);
 }
 
@@ -54,12 +59,12 @@ void	player_input(t_game_data *data)
 	if (data->inputs->left == 1)
 	{
 		data->player->x -= data->player->speed;
-		data->player->idle_img->flip = 1;
+		data->player->sprite->flip = 1;
 	}
 	if (data->inputs->right == 1)
 	{
 		data->player->x += data->player->speed;
-		data->player->idle_img->flip = 0;
+		data->player->sprite->flip = 0;
 	}
 	if (data->inputs->up == 1 && !data->player->fall)
 	{
@@ -102,5 +107,5 @@ void	player_render(t_game_data *data)
 
 	player = data->player;
 	render_animation(data);
-	ilx_render_copy(data->ren, player->idle_img, &player->pts, &player->dst_r);
+	ilx_render_copy(data->ren, player->sprite, &player->pts, &player->dst_s);
 }
