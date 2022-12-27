@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 16:44:50 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/27 16:24:08 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/27 23:55:47 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,8 @@ void	render_animation(t_game_data *data)
 	if (data->inputs->jetpack)
 		render_particle(data);
 	if (data->player->lifes <= 0)
+	{
+		data->player->lifes--;
 		data->player->dst_s.x = 64 * 5;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 11:49:37 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/26 15:35:42 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/27 23:11:58 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ t_game_data	*ini_game(t_ilx_window *win, t_ilx_renderer *ren, t_game_input *in,
 		return (close_game(game), NULL);
 	if (!game->background)
 		return (close_game(game), NULL);
+	game->hud = init_hud(win);
 	return (game);
 }
 
@@ -46,6 +47,7 @@ void	close_game(t_game_data *game)
 		free_level(game);
 	if (game->background)
 		ilx_destroy_texture(game->win, game->background);
+	destroy_hud(game->win, game->hud);
 	ilx_destroy_renderer(game->win, game->ren);
 	ilx_destroy_window(game->win);
 	free(game);

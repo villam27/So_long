@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:53:59 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/27 15:13:52 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/27 23:17:58 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,13 @@ typedef struct s_lvl_data
 	t_ilx_point		pts;
 }	t_lvl_data;
 
+typedef struct s_hud
+{
+	t_ilx_rect		dst_r;
+	t_ilx_point		pts;
+	t_ilx_texture	*life;
+}	t_hud;
+
 typedef struct s_game_data
 {
 	t_ilx_window	*win;
@@ -69,7 +76,9 @@ typedef struct s_game_data
 	t_lvl_data		*levels;
 	t_player		*player;
 	t_ilx_texture	*background;
+	t_hud			*hud;
 }	t_game_data;
+
 
 int			input_key_down(int keycode, t_game_input *inputs);
 int			input_key_up(int keycode, t_game_input *inputs);
@@ -92,4 +101,9 @@ void		render_map_obj(t_game_data *game, int *o, int i, int j);
 void		level_update(t_game_data *game);
 void		level_render(t_game_data *game);
 void		free_level(t_game_data *game);
+
+t_hud		*init_hud(t_ilx_window *win);
+void		destroy_hud(t_ilx_window *win, t_hud *hud);
+void		hud_render(t_game_data *data);
+void		hud_update();
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 13:35:58 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/27 16:26:18 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/27 23:55:17 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ t_player	*create_player(t_game_data *game, int x, int y)
 		return (ilx_free_rect(player->box),
 			ilx_free_rect(player->lastp), free(player), NULL);
 	player->fall = 1;
-	player->gravity = 3;
+	player->gravity = 5;
 	player->speed = 6;
-	player->lifes = 3;
+	player->lifes = 5;
 	player->steps = 0;
 	player->dst_s = ilx_new_rect(0, 0, 64, 64);
 	player->dst_p = ilx_new_rect(0, 0, 64, 64);
@@ -69,6 +69,7 @@ void	player_input(t_game_data *data)
 		data->player->gravity -= 17;
 		data->inputs->up = 0;
 		data->player->steps++;
+		data->player->lifes--;
 	}
 	if (data->inputs->jetpack == 1)
 		player_jetpack(data->player);
@@ -104,6 +105,7 @@ void	player_render(t_game_data *data)
 	t_player	*player;
 
 	player = data->player;
-	render_animation(data);
+	if (player->lifes >= 0)
+		render_animation(data);
 	ilx_render_copy(data->ren, player->sprite, &player->pts, &player->dst_s);
 }

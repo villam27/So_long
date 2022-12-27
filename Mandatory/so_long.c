@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 01:10:24 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/27 14:31:39 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/27 23:50:32 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 
 void	input(t_game_data *game)
 {
-	player_input(game);
+	if (game->player->lifes > 0)
+		player_input(game);
 }
 
 void	update(t_game_data *game)
 {
-	player_update(game);
+	if (game->player->lifes > 0)
+		player_update(game);
 	level_update(game);
 }
 
@@ -43,6 +45,7 @@ void	render(t_game_data *game)
 	step = ft_itoa(game->player->steps);
 	mlx_string_put(game->win->mlx, game->win->mlx_win, 140, 20, 0xfffff, step);
 	free(step);
+	hud_render(game);
 }
 
 int	win_close(t_game_data *game)

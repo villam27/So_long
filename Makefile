@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: alboudje <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 23:55:26 by alboudje          #+#    #+#              #
-#    Updated: 2022/12/27 16:27:50 by alboudje         ###   ########.fr        #
+#    Updated: 2022/12/27 23:19:27 by alboudje         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRC_FILES		= 	main.c \
 					map.c \
 					map_utils.c \
 					map_utils2.c \
+					hud.c \
 					ILX.c \
 					ILX_Rect.c \
 					ILX_Texture.c \
@@ -50,7 +51,7 @@ INCLUDES_FILES 	= 	ILX.h \
 INCLUDES 		= 	$(addprefix $(SRC_FOLDER), $(INCLUDES_FILES))
 
 OBJ 			= 	${SRC:.c=.o}
-CFLAGS 			= 	-Wall -Wextra -Werror #-g3 -fsanitize=address
+CFLAGS 			= 	-Wall -Wextra -Werror -g3 -fsanitize=address
 UNAME_S			:=	$(shell uname -s)
 
 ifeq ($(UNAME_S), Linux)
