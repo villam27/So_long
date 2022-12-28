@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 20:45:18 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/27 22:20:48 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/28 16:41:17 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ t_map_data	*get_map_data(int fd)
 	map->player = 0;
 	map->error = 0;
 	map->exit = 0;
+	map->enemies = 0;
 	while (map_line)
 	{
 		get_row_data(map_line, &map);

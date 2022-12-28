@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 14:30:43 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/27 16:28:26 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/28 16:35:46 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	get_row_data(char *row, t_map_data **data)
 			(*data)->walls++;
 		else if (row[i] == 'C')
 			(*data)->objects++;
+		else if (row[i] == 'A')
+			(*data)->enemies++;
 		else if (row[i] == 'P')
 		{
 			(*data)->player++;

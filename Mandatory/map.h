@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 20:45:11 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/27 22:37:22 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/28 16:34:24 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_map_data
 	int			objects;
 	int			player;
 	int			exit;
+	int			enemies;
 	int			error;
 	t_ilx_point	player_pos;
 	t_ilx_point	exit_pos;

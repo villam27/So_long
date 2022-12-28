@@ -6,7 +6,7 @@
 #    By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 23:55:26 by alboudje          #+#    #+#              #
-#    Updated: 2022/12/28 14:06:42 by alboudje         ###   ########.fr        #
+#    Updated: 2022/12/28 14:35:45 by alboudje         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRC_FILES		= 	main.c \
 					map_utils.c \
 					map_utils2.c \
 					hud.c \
+					enemy.c \
 					ILX.c \
 					ILX_Rect.c \
 					ILX_Texture.c \
