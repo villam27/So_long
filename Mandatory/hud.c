@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 22:37:14 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/27 23:45:56 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/28 14:12:50 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,17 @@ static void	life_render(t_game_data *data)
 
 void	hud_render(t_game_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	life_render(data);
 	while (i < data->player->lifes)
 	{
-		ilx_render_copy(data->ren, data->hud->life, &data->hud->pts, &data->hud->dst_r);
+		ilx_render_copy(data->ren, data->hud->life,
+			&data->hud->pts, &data->hud->dst_r);
 		data->hud->pts.x -= 30;
 		i++;
 	}
-	
 }
 
 void	hud_update(t_hud *hud)

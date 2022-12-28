@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:53:59 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/27 23:17:58 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/28 14:16:57 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,14 @@ typedef struct s_player
 	int				steps;
 }	t_player;
 
+typedef struct s_enemy
+{
+	t_ilx_rect		*box;
+	t_ilx_rect		*lastp;
+	t_ilx_texture	*sprite;	
+	int				direction;
+}	t_enemy;
+
 typedef struct s_lvl_data
 {
 	t_map			*map;
@@ -79,7 +87,6 @@ typedef struct s_game_data
 	t_hud			*hud;
 }	t_game_data;
 
-
 int			input_key_down(int keycode, t_game_input *inputs);
 int			input_key_up(int keycode, t_game_input *inputs);
 
@@ -105,5 +112,5 @@ void		free_level(t_game_data *game);
 t_hud		*init_hud(t_ilx_window *win);
 void		destroy_hud(t_ilx_window *win, t_hud *hud);
 void		hud_render(t_game_data *data);
-void		hud_update();
+void		hud_update(t_hud *hud);
 #endif

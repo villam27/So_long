@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_physics.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alboudje <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 18:45:32 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/27 16:25:54 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/28 14:09:50 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	player_get_obj(t_game_data *data, t_player *player, t_ilx_rect *obj)
 	{
 		x = (obj->x - 16) / 64;
 		y = (obj->y - 16) / 64;
-		if (data->levels->map->map[y][x] == 'C')
+		if (data->levels->map->map[y][x] == 'C' && player->lifes > 0)
 		{
 			data->levels->map->map[y][x] = '0';
 			data->levels->map->data->objects--;
@@ -89,7 +89,7 @@ void	player_fall(t_player *player)
 {
 	if (player->gravity > 2)
 		player->fall = 1;
-	if (player->gravity < 17)
+	if (player->gravity < 20)
 		player->gravity += 1;
 	player->y += player->gravity;
 }

@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 13:35:58 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/27 23:55:17 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/28 14:06:23 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ void	player_input(t_game_data *data)
 		data->player->gravity -= 17;
 		data->inputs->up = 0;
 		data->player->steps++;
-		data->player->lifes--;
 	}
 	if (data->inputs->jetpack == 1)
 		player_jetpack(data->player);
@@ -95,7 +94,7 @@ void	player_update(t_game_data *data)
 		i++;
 	}
 	if (ilx_intersection_rect(data->player->box, data->levels->map->exit)
-		&& data->levels->map->data->objects == 0)
+		&& data->levels->map->data->objects == 0 && data->player->lifes > 0)
 		data->inputs->exit = 1;
 	player_camera(data);
 }
@@ -105,7 +104,6 @@ void	player_render(t_game_data *data)
 	t_player	*player;
 
 	player = data->player;
-	if (player->lifes >= 0)
-		render_animation(data);
+	render_animation(data);
 	ilx_render_copy(data->ren, player->sprite, &player->pts, &player->dst_s);
 }

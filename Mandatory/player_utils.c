@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 16:44:50 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/27 23:55:47 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/28 14:02:44 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	render_animation(t_game_data *data)
 	data->player->pts.x = data->player->x - 14;
 	if ((data->inputs->left || data->inputs->right) && !data->inputs->jetpack)
 	{
-		if (frames >= 5)
+		if (frames >= 5 && data->player->lifes > 0)
 		{
 			data->player->dst_s.x += 64;
 			frames = 0;
@@ -63,7 +63,7 @@ void	render_animation(t_game_data *data)
 		data->player->dst_s.x = 0;
 	if (data->player->gravity || data->player->fall)
 		data->player->dst_s.x = 64 * 4;
-	if (data->inputs->jetpack)
+	if (data->inputs->jetpack && data->player->lifes > 0)
 		render_particle(data);
 	if (data->player->lifes <= 0)
 	{
