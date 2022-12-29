@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 18:44:29 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/18 18:46:29 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/29 16:24:05 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,13 @@ int	ilx_horizont_align_rect(t_ilx_rect *r1, t_ilx_rect *r2)
 	if (r1->x < r2->x + r2->w && r1->x + r1->w > r2->x)
 		return (1);
 	return (0);
+}
+
+t_ilx_point	ilx_new_points(int x, int y)
+{
+	t_ilx_point	pts;
+
+	pts.x = x;
+	pts.y = y;
+	return (pts);
 }

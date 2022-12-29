@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 13:35:58 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/28 14:06:23 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/29 16:03:16 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ t_player	*create_player(t_game_data *game, int x, int y)
 	player->speed = 6;
 	player->lifes = 5;
 	player->steps = 0;
+	player->inv_frames = 0;
 	player->dst_s = ilx_new_rect(0, 0, 64, 64);
 	player->dst_p = ilx_new_rect(0, 0, 64, 64);
 	return (player);
@@ -76,23 +77,12 @@ void	player_input(t_game_data *data)
 
 void	player_update(t_game_data *data)
 {
-	int	i;
-
-	i = 0;
 	player_fall(data->player);
 	data->player->box->y = data->player->y;
 	data->player->box->x = data->player->x;
-	while (data->levels->map->boxs[i])
-	{
-		player_collision(data->player, data->levels->map->boxs[i]);
-		i++;
-	}
-	i = 0;
-	while (data->levels->map->objects[i])
-	{
-		player_get_obj(data, data->player, data->levels->map->objects[i]);
-		i++;
-	}
+	player_interation(data);
+	if (data->player->inv_frames > 0)
+		data->player->inv_frames--;
 	if (ilx_intersection_rect(data->player->box, data->levels->map->exit)
 		&& data->levels->map->data->objects == 0 && data->player->lifes > 0)
 		data->inputs->exit = 1;
@@ -105,5 +95,7 @@ void	player_render(t_game_data *data)
 
 	player = data->player;
 	render_animation(data);
-	ilx_render_copy(data->ren, player->sprite, &player->pts, &player->dst_s);
+	if (data->player->inv_frames % 2 == 0)
+		ilx_render_copy(data->ren, player->sprite,
+			&player->pts, &player->dst_s);
 }

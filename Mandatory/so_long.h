@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:53:59 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/28 16:11:10 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/29 15:03:00 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_player
 	int				speed;
 	int				lifes;
 	int				steps;
+	int				inv_frames;
 }	t_player;
 
 typedef struct s_enemy
@@ -83,7 +84,8 @@ typedef struct s_game_data
 	t_game_input	*inputs;
 	t_lvl_data		*levels;
 	t_player		*player;
-	t_enemy			*enemies;
+	t_enemy			*enemy;
+	t_enemy			**enemies;
 	t_ilx_texture	*background;
 	t_hud			*hud;
 }	t_game_data;
@@ -117,6 +119,10 @@ void		hud_update(t_hud *hud);
 
 t_enemy		*create_enemy(int x, int y, t_ilx_window *win);
 void		destroy_enemy(t_enemy *enemy, t_ilx_window *win);
-void		enemy_render(t_game_data *data);
-void		enemy_update(t_game_data *data);
+t_enemy		**create_enemies(int number, t_ilx_window *win);
+void		destroy_enemies(t_enemy **enemies, t_ilx_window *win);
+void		enemy_set_position(t_enemy *enemy, int x, int y);
+void		enemy_render(t_game_data *data, t_enemy *enemy);
+void		enemy_update(t_game_data *data, t_enemy *enemy);
+void		set_all_pos(t_game_data *data);
 #endif

@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 14:30:43 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/28 16:35:46 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/29 16:23:50 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,12 @@ void	get_row_data(char *row, t_map_data **data)
 		else if (row[i] == 'P')
 		{
 			(*data)->player++;
-			(*data)->player_pos.x = i;
-			(*data)->player_pos.y = (*data)->rows;
+			(*data)->player_pos = ilx_new_points(i, (*data)->rows);
 		}
 		else if (row[i] == 'E')
 		{
 			(*data)->exit++;
-			(*data)->exit_pos.x = i;
-			(*data)->exit_pos.y = (*data)->rows;
+			(*data)->exit_pos = ilx_new_points(i, (*data)->rows);
 		}
 		else if (row[i] != '0' && row[i] != '\n')
 			(*data)->error = 1;

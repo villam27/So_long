@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 16:44:50 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/28 15:02:53 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/29 16:16:57 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ int	player_load_texture(t_player *player, t_ilx_window *win)
 	return (0);
 }
 
-void	render_animation(t_game_data *data)
-{
+static void	walk_animation(t_game_data *data)
+{	
 	static int	frames = 0;
 
 	data->player->pts.y = data->player->y - 14;
@@ -61,6 +61,11 @@ void	render_animation(t_game_data *data)
 	}
 	else
 		data->player->dst_s.x = 0;
+}
+
+void	render_animation(t_game_data *data)
+{
+	walk_animation(data);
 	if (data->player->gravity || data->player->fall)
 		data->player->dst_s.x = 64 * 4;
 	if (data->inputs->jetpack && data->player->lifes > 0)
@@ -69,5 +74,34 @@ void	render_animation(t_game_data *data)
 	{
 		data->player->lifes--;
 		data->player->dst_s.x = 64 * 5;
+	}
+}
+
+void	player_interation(t_game_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (data->levels->map->boxs[i])
+	{
+		player_collision(data->player, data->levels->map->boxs[i]);
+		i++;
+	}
+	i = 0;
+	while (data->levels->map->objects[i])
+	{
+		player_get_obj(data, data->player, data->levels->map->objects[i]);
+		i++;
+	}
+	i = 0;
+	while (data->player->inv_frames <= 0
+		&& data->player->lifes > 0 && data->enemies[i])
+	{
+		if (ilx_intersection_rect(data->player->box, data->enemies[i]->box))
+		{
+			data->player->lifes--;
+			data->player->inv_frames = 100;
+		}
+		i++;
 	}
 }
