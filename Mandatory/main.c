@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:55:09 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/26 15:34:55 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/29 17:58:34 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,10 @@ int	main(int argc, char **argv)
 	t_game_data		*game;
 	char			*ext;
 
-	ext = ft_strrchr(argv[1], '.');
-	if (ext && argc == 2 && !ft_strncmp(".ber", ext, 5)
+	ext = NULL;
+	if (argc == 2)
+		ext = ft_strrchr(argv[1], '.');
+	if (ext && !ft_strncmp(".ber", ext, 5)
 		&& !init_all(&game, &inputs, argv[1]))
 	{
 		mlx_hook(game->win->mlx_win, 17, 0, win_close, game);
