@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:53:59 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/29 15:03:00 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/29 17:29:23 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ typedef struct s_game_data
 	t_game_input	*inputs;
 	t_lvl_data		*levels;
 	t_player		*player;
-	t_enemy			*enemy;
 	t_enemy			**enemies;
 	t_ilx_texture	*background;
 	t_hud			*hud;
