@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 20:45:18 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/30 15:30:33 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/30 15:41:17 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ t_map	*open_map(char *path)
 		return (perror(path), NULL);
 	map_data = get_map_data(map_fd);
 	close(map_fd);
+	if (!map_data)
+		return (NULL);
 	map_fd = open(path, O_RDONLY);
 	map = create_map(map_fd, map_data);
 	close(map_fd);
