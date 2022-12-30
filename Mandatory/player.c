@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 13:35:58 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/29 16:03:16 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/30 15:57:31 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ void	player_input(t_game_data *data)
 		data->player->x += data->player->speed;
 		data->player->sprite->flip = 0;
 	}
+	if (data->inputs->down)
+		data->player->y += data->player->speed;
 	if (data->inputs->up == 1 && !data->player->fall)
 	{
 		data->player->fall = 1;

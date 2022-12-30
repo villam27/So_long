@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: alboudje <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 23:55:26 by alboudje          #+#    #+#              #
-#    Updated: 2022/12/19 12:05:27 by alboudje         ###   ########.fr        #
+#    Updated: 2022/12/30 15:54:22 by alboudje         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,7 +69,7 @@ AR			=	ar
 ARFLAGS 	=	-rcs
 OBJ			=	${SRC:.c=.o}
 CFLAGS		=	-Wall -Werror -Wextra
-CC			=	clang
+CC			=	gcc
 
 all : $(NAME)
 
@@ -78,7 +78,7 @@ $(NAME) : $(OBJ)
 	@printf "$(GREEN)Creating $(CYAN)$(NAME)$(END): OK\n"
 
 %.o : %.c $(HEADERS) Makefile
-	@$(CC) $(CFLAGS) -o $@ -c $< -I $(HEADERS)
+	@$(CC) $(CFLAGS) -o $@ -c $<
 	@printf "$(GREEN)Compiling $(NAME): $(CYAN)$<: $(GREEN)OK$(END)\n"
 
 clean :

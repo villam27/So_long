@@ -6,12 +6,12 @@
 #    By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 23:55:26 by alboudje          #+#    #+#              #
-#    Updated: 2022/12/30 14:38:43 by alboudje         ###   ########.fr        #
+#    Updated: 2022/12/30 15:54:28 by alboudje         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 			= 	so_long
-CC 				= 	clang
+CC 				= 	gcc
 
 LIBFT 			= 	libft/libft.a
 LIBFT_FILES		= 	libft/*.c libft/*.h libft/Makefile
