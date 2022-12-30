@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 22:37:14 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/28 14:12:50 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/30 16:02:48 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,12 @@ t_hud	*init_hud(t_ilx_window *win)
 	t_hud	*hud;
 
 	hud = malloc(sizeof(t_hud));
+	if (!hud)
+		return (NULL);
 	hud->dst_r = ilx_new_rect(0, 0, 28, 28);
 	hud->life = ilx_create_texture(win, "assets/lifes.xpm");
+	if (!hud->life)
+		return (free(hud), NULL);
 	return (hud);
 }
 
