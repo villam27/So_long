@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:55:09 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/29 17:58:34 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/30 15:30:02 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,20 +60,26 @@ int	main(int argc, char **argv)
 	t_game_input	inputs;
 	t_game_data		*game;
 	char			*ext;
+	t_map			*map;
 
 	ext = NULL;
+	map = NULL;
 	if (argc == 2)
+	{
+		map = open_map(argv[1]);
 		ext = ft_strrchr(argv[1], '.');
-	if (ext && !ft_strncmp(".ber", ext, 5)
+	}
+	if (map && ext && !ft_strncmp(".ber", ext, 5)
 		&& !init_all(&game, &inputs, argv[1]))
 	{
+		destroy_map(map);
 		mlx_hook(game->win->mlx_win, 17, 0, win_close, game);
 		mlx_hook(game->win->mlx_win, 2, 1L << 0, input_key_down, &inputs);
 		mlx_hook(game->win->mlx_win, 3, 1L << 1, input_key_up, &inputs);
 		mlx_loop_hook(game->win->mlx, next_frame, game);
 		mlx_loop(game->win->mlx);
 	}
-	ft_putstr_fd("An error has occurred, ", 2);
-	ft_putstr_fd("try to restart the game with valid map or path\n", 2);
+	destroy_map(map);
+	ft_putstr_fd("Error: restart the game with valid map or path!\n", 2);
 	return (EXIT_FAILURE);
 }

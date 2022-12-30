@@ -6,7 +6,7 @@
 #    By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 23:55:26 by alboudje          #+#    #+#              #
-#    Updated: 2022/12/29 17:40:22 by alboudje         ###   ########.fr        #
+#    Updated: 2022/12/30 14:38:43 by alboudje         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ INCLUDES_FILES 	= 	ILX.h \
 INCLUDES 		= 	$(addprefix $(SRC_FOLDER), $(INCLUDES_FILES))
 
 OBJ 			= 	${SRC:.c=.o}
-CFLAGS 			= 	-Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS 			= 	-Wall -Wextra -Werror# -g3 -fsanitize=address
 UNAME_S			:=	$(shell uname -s)
 
 ifeq ($(UNAME_S), Linux)

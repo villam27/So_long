@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 20:45:18 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/28 16:41:17 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/30 15:30:33 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,12 +113,15 @@ int	check_map(t_map *map)
 
 void	destroy_map(t_map *map)
 {
-	ilx_free_rects(map->boxs);
-	ilx_free_rects(map->objects);
-	ilx_free_rect(map->exit);
-	if (map->map)
-		free_all(map->map);
-	if (map->data)
-		free(map->data);
-	free(map);
+	if (map)
+	{
+		ilx_free_rects(map->boxs);
+		ilx_free_rects(map->objects);
+		ilx_free_rect(map->exit);
+		if (map->map)
+			free_all(map->map);
+		if (map->data)
+			free(map->data);
+		free(map);
+	}
 }

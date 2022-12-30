@@ -6,7 +6,7 @@
 /*   By: alboudje <alboudje@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 01:25:18 by alboudje          #+#    #+#             */
-/*   Updated: 2022/12/29 17:34:43 by alboudje         ###   ########.fr       */
+/*   Updated: 2022/12/30 15:14:37 by alboudje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ t_ilx_window	*ilx_create_window(int size_x, int size_y, char *title)
 void	ilx_destroy_window(t_ilx_window *window)
 {
 	mlx_destroy_window(window->mlx, window->mlx_win);
-	free(window->mlx);
 	free(window);
 }
 
